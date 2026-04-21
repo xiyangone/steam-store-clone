@@ -19,7 +19,9 @@ describe('App', () => {
 
     render(<App />);
 
-    expect(screen.getByAltText('Steam')).toHaveAttribute(
+    const [headerLogo] = screen.getAllByAltText('Steam');
+
+    expect(headerLogo).toHaveAttribute(
       'src',
       'https://store.akamai.steamstatic.com/public/shared/images/header/logo_steam.svg?t=962016'
     );

@@ -29,7 +29,7 @@ describe('SteamHomePage', () => {
     await user.click(topSellerTab);
 
     expect(topSellerTab).toHaveAttribute('aria-selected', 'true');
-    expect(screen.getByText('红色沙漠')).toBeInTheDocument();
+    expect(screen.getAllByText('PRAGMATA').length).toBeGreaterThanOrEqual(2);
   });
 
   it('renders featured artwork from local assets so the hero is always visible', () => {

@@ -13,7 +13,7 @@ import type {
   StoreMenuGroup
 } from '../features/steam-home/types';
 
-const asset = (name: string) => `/steam/home/${name}`;
+const asset = (name: string) => `${import.meta.env.BASE_URL}steam/home/${name}`;
 
 const medievalFestivalAssets = {
   href: 'https://store.steampowered.com/category/medieval?l=schinese',
