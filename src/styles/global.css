@@ -1,0 +1,115 @@
+@font-face {
+  font-family: "Motiva Sans";
+  src: url("https://store.fastly.steamstatic.com/public/shared/fonts/MotivaSans-Regular.ttf?v=4.015")
+    format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Motiva Sans";
+  src: url("https://store.fastly.steamstatic.com/public/shared/fonts/MotivaSans-Medium.ttf?v=4.015")
+    format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Motiva Sans";
+  src: url("https://store.fastly.steamstatic.com/public/shared/fonts/MotivaSans-Bold.ttf?v=4.015")
+    format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #e5edf6;
+  background:
+    radial-gradient(circle at top, rgba(27, 66, 110, 0.55), transparent 32%),
+    linear-gradient(180deg, #101823 0%, #132033 38%, #0f1a2b 100%);
+  color-scheme: dark;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  --shell-width: min(1200px, calc(100vw - 48px));
+  --surface: rgba(23, 35, 53, 0.94);
+  --surface-2: rgba(16, 26, 40, 0.92);
+  --line: rgba(255, 255, 255, 0.08);
+  --line-strong: rgba(124, 180, 236, 0.36);
+  --text-muted: #acbfd5;
+  --accent: #66c0f4;
+  --accent-strong: #1a9fff;
+  --steam-ui-font: "Motiva Sans", Twemoji, "Noto Sans", Helvetica, sans-serif;
+  --shadow:
+    0 14px 36px rgba(0, 0, 0, 0.34),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: #0f1a2b;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+}
+
+body,
+button,
+input {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input {
+  border: 0;
+}
+
+button {
+  cursor: pointer;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.shell {
+  width: var(--shell-width);
+  margin: 0 auto;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
