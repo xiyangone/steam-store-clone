@@ -921,64 +921,6 @@ export const rankingTabsByLocale: Record<Locale, RankingTab[]> = {
           reviewCount: '0',
           discountPercent: 10,
           originalPrice: '¥ 19.99'
-        },
-        {
-          title: '余火守护者 The Ember Guardian',
-          description: '塔防、极简主义、建造、双摇杆射击',
-          price: '¥ 69.30',
-          image:
-            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3570060/26e6bf1d7ae7fc67e020a819c58971f6e47a47c1/capsule_231x87.jpg?t=1776533389',
-          releaseDate: '2026 年 4 月 17 日',
-          platforms: ['windows'],
-          topTags: ['塔防', '极简主义', '建造', '双摇杆射击'],
-          screenshots: [
-            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3570060/7df4dcd69300c5b788b0169e6e8ccb8517fda717/ss_7df4dcd69300c5b788b0169e6e8ccb8517fda717.600x338.jpg?t=1776533389',
-            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3570060/671922dba7765c15604d83a3f039c695a37bcc1c/ss_671922dba7765c15604d83a3f039c695a37bcc1c.600x338.jpg?t=1776533389',
-            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3570060/d99863cb38698f56ca4d2730263c5ebb04b8ec71/ss_d99863cb38698f56ca4d2730263c5ebb04b8ec71.600x338.jpg?t=1776533389',
-            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3570060/83137ccb7f176775825c29ec5f7173f31e730b22/ss_83137ccb7f176775825c29ec5f7173f31e730b22.600x338.jpg?t=1776533389'
-          ],
-          reviewSummary: '新品上架',
-          reviewCount: '0',
-          discountPercent: 10,
-          originalPrice: '¥ 77.00'
-        },
-        {
-          title: '空中帝国 Airborne Empire',
-          description: '城市营造、开放世界、角色扮演、探索',
-          price: '¥ 54.00',
-          image:
-            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2438680/afe9dea609182d0d9b45d957509fe86cec13eca3/capsule_231x87_alt_assets_0_schinese.jpg?t=1776438327',
-          releaseDate: '2026 年 4 月 17 日',
-          platforms: ['windows', 'mac'],
-          topTags: ['城市营造', '开放世界', '角色扮演', '探索'],
-          screenshots: [
-            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2438680/6b727a22e2d58319b3a6f8bcced68a1eea8bbf21/ss_6b727a22e2d58319b3a6f8bcced68a1eea8bbf21.600x338.jpg?t=1776438327',
-            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2438680/ss_83b5bfadc91a0287f242506e79d92c86c561cd66.600x338.jpg?t=1776438327',
-            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2438680/8fb021bdf9a3e12ebf8eac385d1da69922f0ec00/ss_8fb021bdf9a3e12ebf8eac385d1da69922f0ec00.600x338.jpg?t=1776438327',
-            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2438680/ss_030e3d60ce1d399be0cb5b520aef3fedcd43ee8a.600x338.jpg?t=1776438327'
-          ],
-          reviewSummary: '好评',
-          reviewCount: '681',
-          discountPercent: 50,
-          originalPrice: '¥ 108.00'
-        },
-        {
-          title: 'PRAGMATA',
-          description: '可爱、科幻、动作、第三人称射击',
-          price: '¥ 268.00',
-          image:
-            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3357650/3e7cf55cf72a980ac94cf45d4212e8f0cb566f7f/capsule_231x87.jpg?t=1776398844',
-          releaseDate: '2026 年 4 月 16 日',
-          platforms: ['windows'],
-          topTags: ['动作', '科幻', '冒险', '第三人称射击'],
-          screenshots: [
-            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3357650/9699288b90d0aad320e998f107b59edd27e9ea61/ss_9699288b90d0aad320e998f107b59edd27e9ea61.600x338.jpg?t=1776398844',
-            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3357650/62486c0475c7bf1a14889d61a51ad24f09e5f044/ss_62486c0475c7bf1a14889d61a51ad24f09e5f044.600x338.jpg?t=1776398844',
-            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3357650/26773713a2435c8edc2eac5e7eb234324b3b002f/ss_26773713a2435c8edc2eac5e7eb234324b3b002f.600x338.jpg?t=1776398844',
-            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3357650/8913ab7128c72ddd1b407c274e9615b2f6e658a2/ss_8913ab7128c72ddd1b407c274e9615b2f6e658a2.600x338.jpg?t=1776398844'
-          ],
-          reviewSummary: '特别好评',
-          reviewCount: '11,482'
         }
       ]
     },
@@ -1050,6 +992,30 @@ export const rankingTabsByLocale: Record<Locale, RankingTab[]> = {
           screenshots: [asset('deck-hades2.jpg'), asset('ow-2.jpg'), asset('cs2-2.jpg'), asset('ck3-2.jpg')],
           reviewSummary: '好评如潮',
           reviewCount: '67,321'
+        },
+        {
+          title: 'Schedule I',
+          description: '合作混乱、犯罪模拟、黑色幽默、热度飙升',
+          price: '¥ 76.00',
+          image: asset('cheap-breach.jpg'),
+          releaseDate: '现已推出',
+          platforms: ['windows'],
+          topTags: ['合作', '犯罪模拟', '黑色幽默', '热门新品'],
+          screenshots: [asset('cheap-breach.jpg'), asset('cheap-hike.jpg'), asset('cheap-metro.jpg'), asset('cheap-slay.jpg')],
+          reviewSummary: '特别好评',
+          reviewCount: '58,932'
+        },
+        {
+          title: 'R.E.P.O.',
+          description: '联机恐怖、物理互动、合作逃生、爆款直播',
+          price: '¥ 42.00',
+          image: asset('vr-bonelab.jpg'),
+          releaseDate: '现已推出',
+          platforms: ['windows'],
+          topTags: ['联机恐怖', '物理互动', '合作', '主播热玩'],
+          screenshots: [asset('ow-3.jpg'), asset('cs2-3.jpg'), asset('ck3-3.jpg'), asset('cheap-hike.jpg')],
+          reviewSummary: '好评如潮',
+          reviewCount: '41,287'
         }
       ]
     },
@@ -1100,6 +1066,39 @@ export const rankingTabsByLocale: Record<Locale, RankingTab[]> = {
           platforms: ['windows'],
           topTags: ['开放世界', '动作冒险', '动漫', '角色扮演'],
           screenshots: [asset('ow-1.jpg'), asset('ck3-1.jpg'), asset('cs2-1.jpg'), asset('ow-3.jpg')],
+          reviewSummary: '即将推出'
+        },
+        {
+          title: 'Judas',
+          description: '剧情驱动、科幻射击、沉浸模拟、单人冒险',
+          price: '即将推出',
+          image: asset('deal-hades2.jpg'),
+          releaseDate: '即将推出',
+          platforms: ['windows'],
+          topTags: ['剧情驱动', '科幻射击', '沉浸模拟', '单人冒险'],
+          screenshots: [asset('cs2-2.jpg'), asset('ow-2.jpg'), asset('ck3-2.jpg'), asset('ow-4.jpg')],
+          reviewSummary: '即将推出'
+        },
+        {
+          title: 'Fable',
+          description: '奇幻开放世界、角色扮演、幽默叙事、重启新作',
+          price: '即将推出',
+          image: asset('deck-vampire.jpg'),
+          releaseDate: '2026',
+          platforms: ['windows'],
+          topTags: ['奇幻', '角色扮演', '开放世界', '冒险'],
+          screenshots: [asset('cheap-hike.jpg'), asset('ow-1.jpg'), asset('cheap-breach.jpg'), asset('cheap-slay.jpg')],
+          reviewSummary: '即将推出'
+        },
+        {
+          title: 'WUCHANG: Fallen Feathers',
+          description: '魂系动作、明末背景、硬核战斗、国风奇谭',
+          price: '即将推出',
+          image: asset('deal-origin.jpg'),
+          releaseDate: '2026',
+          platforms: ['windows'],
+          topTags: ['魂系动作', '国风', '黑暗奇幻', '动作角色扮演'],
+          screenshots: [asset('ck3-1.jpg'), asset('ow-2.jpg'), asset('cs2-2.jpg'), asset('ow-3.jpg')],
           reviewSummary: '即将推出'
         }
       ]
@@ -1164,6 +1163,48 @@ export const rankingTabsByLocale: Record<Locale, RankingTab[]> = {
           reviewCount: '18,225',
           discountPercent: 30,
           originalPrice: '¥ 15.20'
+        },
+        {
+          title: 'Balatro',
+          description: '牌组构筑、Rogue-like、策略、独立',
+          price: '¥ 54.40',
+          image: asset('deck-balatro.jpg'),
+          releaseDate: '特惠进行中',
+          platforms: ['windows', 'mac'],
+          topTags: ['牌组构筑', 'Rogue-like', '策略', '独立'],
+          screenshots: [asset('cheap-breach.jpg'), asset('cheap-slay.jpg'), asset('cheap-hike.jpg'), asset('cheap-metro.jpg')],
+          reviewSummary: '好评如潮',
+          reviewCount: '83,412',
+          discountPercent: 20,
+          originalPrice: '¥ 68.00'
+        },
+        {
+          title: 'Vampire Survivors',
+          description: '弹幕割草、Rogue-lite、像素、极致性价比',
+          price: '¥ 17.60',
+          image: asset('deck-vampire.jpg'),
+          releaseDate: '特惠进行中',
+          platforms: ['windows', 'mac'],
+          topTags: ['Rogue-lite', '像素', '弹幕割草', '独立'],
+          screenshots: [asset('cheap-slay.jpg'), asset('cheap-breach.jpg'), asset('cheap-hike.jpg'), asset('cheap-metro.jpg')],
+          reviewSummary: '好评如潮',
+          reviewCount: '2,34,511',
+          discountPercent: 20,
+          originalPrice: '¥ 22.00'
+        },
+        {
+          title: 'Hollow Knight',
+          description: '类银河战士恶魔城、探索、动作、口碑神作',
+          price: '¥ 29.60',
+          image: asset('deal-hades2.jpg'),
+          releaseDate: '特惠进行中',
+          platforms: ['windows', 'mac', 'linux'],
+          topTags: ['类银河战士恶魔城', '探索', '动作', '困难'],
+          screenshots: [asset('ow-1.jpg'), asset('ow-3.jpg'), asset('ck3-2.jpg'), asset('cheap-hike.jpg')],
+          reviewSummary: '好评如潮',
+          reviewCount: '3,29,004',
+          discountPercent: 20,
+          originalPrice: '¥ 37.00'
         }
       ]
     },
@@ -1231,6 +1272,30 @@ export const rankingTabsByLocale: Record<Locale, RankingTab[]> = {
           screenshots: [asset('cheap-slay.jpg'), asset('cheap-breach.jpg'), asset('cheap-hike.jpg'), asset('cheap-metro.jpg')],
           reviewSummary: '特别好评',
           reviewCount: '72,885'
+        },
+        {
+          title: 'Apex Legends',
+          description: '英雄大逃杀、滑铲枪战、组队竞技、免费开玩',
+          price: '免费开玩',
+          image: asset('vr-alyx.jpg'),
+          releaseDate: '现已推出',
+          platforms: ['windows'],
+          topTags: ['大逃杀', '英雄射击', 'FPS', '免费开玩'],
+          screenshots: [asset('cs2-2.jpg'), asset('cs2-3.jpg'), asset('ow-2.jpg'), asset('ow-3.jpg')],
+          reviewSummary: '特别好评',
+          reviewCount: '783,118'
+        },
+        {
+          title: 'PUBG: BATTLEGROUNDS',
+          description: '写实大逃杀、枪械手感、长期热门、免费开玩',
+          price: '免费开玩',
+          image: asset('deal-cs2.jpg'),
+          releaseDate: '现已推出',
+          platforms: ['windows'],
+          topTags: ['大逃杀', '写实射击', '多人', '免费开玩'],
+          screenshots: [asset('ow-4.jpg'), asset('cs2-1.jpg'), asset('cs2-4.jpg'), asset('ow-1.jpg')],
+          reviewSummary: '多半好评',
+          reviewCount: '15,28,110'
         }
       ]
     }
@@ -1282,6 +1347,54 @@ export const rankingTabsByLocale: Record<Locale, RankingTab[]> = {
           reviewCount: '132',
           discountPercent: 10,
           originalPrice: '$29.00'
+        },
+        {
+          title: 'Moonlighter 2: The Endless Vault',
+          description: 'Action RPG, shopkeeping, dungeon runs, loot',
+          price: '$29.99',
+          image: asset('deck-vampire.jpg'),
+          releaseDate: 'Apr 18, 2026',
+          platforms: ['windows'],
+          topTags: ['Action RPG', 'Shopkeeper', 'Dungeon Crawler', 'Loot'],
+          screenshots: [asset('ck3-1.jpg'), asset('ow-2.jpg'), asset('cheap-breach.jpg'), asset('cheap-metro.jpg')],
+          reviewSummary: 'Positive',
+          reviewCount: '74'
+        },
+        {
+          title: 'Into the Grid',
+          description: 'Cyberpunk tactics, deckbuilding, short runs',
+          price: '$19.99',
+          image: asset('deal-origin.jpg'),
+          releaseDate: 'Apr 17, 2026',
+          platforms: ['windows', 'mac'],
+          topTags: ['Deckbuilding', 'Cyberpunk', 'Tactics', 'Roguelite'],
+          screenshots: [asset('ow-1.jpg'), asset('cs2-2.jpg'), asset('cheap-slay.jpg'), asset('cheap-hike.jpg')],
+          reviewSummary: 'Mostly Positive',
+          reviewCount: '218'
+        },
+        {
+          title: 'Schedule I',
+          description: 'Co-op crime sim that exploded across streaming and wishlists.',
+          price: '$19.99',
+          image: asset('cheap-breach.jpg'),
+          releaseDate: 'Apr 18, 2026',
+          platforms: ['windows'],
+          topTags: ['Co-op', 'Crime', 'Simulation', 'Comedy'],
+          screenshots: [asset('cheap-breach.jpg'), asset('cheap-hike.jpg'), asset('cheap-metro.jpg'), asset('cheap-slay.jpg')],
+          reviewSummary: 'Very Positive',
+          reviewCount: '58,932'
+        },
+        {
+          title: 'R.E.P.O.',
+          description: 'Co-op horror with physics chaos and huge launch momentum.',
+          price: '$11.99',
+          image: asset('vr-bonelab.jpg'),
+          releaseDate: 'Apr 17, 2026',
+          platforms: ['windows'],
+          topTags: ['Co-op Horror', 'Physics', 'Extraction', 'Funny'],
+          screenshots: [asset('ow-3.jpg'), asset('cs2-3.jpg'), asset('ck3-3.jpg'), asset('cheap-hike.jpg')],
+          reviewSummary: 'Overwhelmingly Positive',
+          reviewCount: '41,287'
         }
       ]
     },
@@ -1325,6 +1438,54 @@ export const rankingTabsByLocale: Record<Locale, RankingTab[]> = {
           screenshots: [asset('ck3-1.jpg'), asset('ck3-2.jpg'), asset('ck3-3.jpg'), asset('ck3-4.jpg')],
           reviewSummary: 'Very Positive',
           reviewCount: '165,421'
+        },
+        {
+          title: 'Schedule I',
+          description: 'Crime sim, co-op chaos, and viral momentum.',
+          price: '$19.99',
+          image: asset('cheap-breach.jpg'),
+          releaseDate: 'Now Available',
+          platforms: ['windows'],
+          topTags: ['Co-op', 'Simulation', 'Crime', 'Comedy'],
+          screenshots: [asset('cheap-breach.jpg'), asset('cheap-hike.jpg'), asset('cheap-metro.jpg'), asset('cheap-slay.jpg')],
+          reviewSummary: 'Very Positive',
+          reviewCount: '58,932'
+        },
+        {
+          title: 'Hades II',
+          description: 'Early access powerhouse with relentless repeat sales.',
+          price: '$29.99',
+          image: asset('deal-hades2.jpg'),
+          releaseDate: 'Early Access',
+          platforms: ['windows'],
+          topTags: ['Action Roguelike', 'Mythology', 'Fast-Paced', 'Indie'],
+          screenshots: [asset('deck-hades2.jpg'), asset('ow-2.jpg'), asset('cs2-2.jpg'), asset('ck3-2.jpg')],
+          reviewSummary: 'Overwhelmingly Positive',
+          reviewCount: '67,321'
+        },
+        {
+          title: 'Schedule I',
+          description: 'Co-op crime sim chaos with massive streaming momentum.',
+          price: '$19.99',
+          image: asset('cheap-breach.jpg'),
+          releaseDate: 'Now Available',
+          platforms: ['windows'],
+          topTags: ['Co-op', 'Crime', 'Simulation', 'Comedy'],
+          screenshots: [asset('cheap-breach.jpg'), asset('cheap-hike.jpg'), asset('cheap-metro.jpg'), asset('cheap-slay.jpg')],
+          reviewSummary: 'Very Positive',
+          reviewCount: '58,932'
+        },
+        {
+          title: 'R.E.P.O.',
+          description: 'Physics-driven co-op horror that keeps selling out weekends.',
+          price: '$11.99',
+          image: asset('vr-bonelab.jpg'),
+          releaseDate: 'Now Available',
+          platforms: ['windows'],
+          topTags: ['Co-op Horror', 'Physics', 'Extraction', 'Funny'],
+          screenshots: [asset('ow-3.jpg'), asset('cs2-3.jpg'), asset('ck3-3.jpg'), asset('cheap-hike.jpg')],
+          reviewSummary: 'Overwhelmingly Positive',
+          reviewCount: '41,287'
         }
       ]
     },
@@ -1353,6 +1514,61 @@ export const rankingTabsByLocale: Record<Locale, RankingTab[]> = {
           platforms: ['windows'],
           topTags: ['Extraction', 'Co-op', 'Shooter', 'Sci-Fi'],
           screenshots: [asset('cs2-1.jpg'), asset('cs2-2.jpg'), asset('cs2-3.jpg'), asset('cs2-4.jpg')],
+          reviewSummary: 'Coming Soon'
+        },
+        {
+          title: 'Subnautica 2',
+          description: 'Co-op survival beneath an unfamiliar ocean.',
+          price: 'Coming Soon',
+          image: asset('deal-origin.jpg'),
+          releaseDate: '2026',
+          platforms: ['windows'],
+          topTags: ['Survival', 'Open World', 'Co-op', 'Exploration'],
+          screenshots: [asset('ck3-1.jpg'), asset('ck3-2.jpg'), asset('ck3-3.jpg'), asset('ck3-4.jpg')],
+          reviewSummary: 'Coming Soon'
+        },
+        {
+          title: 'Judas',
+          description: 'Narrative-driven sci-fi shooter from Ghost Story Games.',
+          price: 'Coming Soon',
+          image: asset('deal-hades2.jpg'),
+          releaseDate: 'TBA',
+          platforms: ['windows'],
+          topTags: ['Story Rich', 'Sci-Fi', 'Shooter', 'Immersive Sim'],
+          screenshots: [asset('ow-2.jpg'), asset('cs2-2.jpg'), asset('ow-3.jpg'), asset('ck3-2.jpg')],
+          reviewSummary: 'Coming Soon'
+        },
+        {
+          title: 'Fable',
+          description: 'Fantasy action RPG reboot with British charm.',
+          price: 'Coming Soon',
+          image: asset('deck-vampire.jpg'),
+          releaseDate: '2026',
+          platforms: ['windows'],
+          topTags: ['RPG', 'Fantasy', 'Adventure', 'Open World'],
+          screenshots: [asset('cheap-hike.jpg'), asset('ow-1.jpg'), asset('cheap-breach.jpg'), asset('cheap-slay.jpg')],
+          reviewSummary: 'Coming Soon'
+        },
+        {
+          title: 'WUCHANG: Fallen Feathers',
+          description: 'Soulslike action RPG rooted in late Ming myth.',
+          price: 'Coming Soon',
+          image: asset('deal-origin.jpg'),
+          releaseDate: '2026',
+          platforms: ['windows'],
+          topTags: ['Soulslike', 'Action RPG', 'Dark Fantasy', 'Chinese Myth'],
+          screenshots: [asset('ck3-1.jpg'), asset('ow-2.jpg'), asset('cs2-2.jpg'), asset('ow-3.jpg')],
+          reviewSummary: 'Coming Soon'
+        },
+        {
+          title: 'The Seven Deadly Sins: Origin',
+          description: 'Anime open-world action RPG with party swapping.',
+          price: 'Coming Soon',
+          image: asset('deal-origin.jpg'),
+          releaseDate: 'Coming Soon',
+          platforms: ['windows'],
+          topTags: ['Open World', 'Anime', 'Action RPG', 'Adventure'],
+          screenshots: [asset('ow-1.jpg'), asset('ck3-1.jpg'), asset('cs2-1.jpg'), asset('ow-3.jpg')],
           reviewSummary: 'Coming Soon'
         }
       ]
@@ -1389,6 +1605,76 @@ export const rankingTabsByLocale: Record<Locale, RankingTab[]> = {
           reviewCount: '98,650',
           discountPercent: 30,
           originalPrice: '$19.99'
+        },
+        {
+          title: 'DREDGE',
+          description: 'Fishing horror with a moody atmosphere and a sharp cut.',
+          price: '$14.99',
+          image: asset('cheap-hike.jpg'),
+          releaseDate: 'On Sale Now',
+          platforms: ['windows', 'mac'],
+          topTags: ['Fishing', 'Horror', 'Indie', 'Exploration'],
+          screenshots: [asset('cheap-breach.jpg'), asset('cheap-hike.jpg'), asset('cheap-metro.jpg'), asset('cheap-slay.jpg')],
+          reviewSummary: 'Very Positive',
+          reviewCount: '31,210',
+          discountPercent: 40,
+          originalPrice: '$24.99'
+        },
+        {
+          title: 'Balatro',
+          description: 'The card roguelike sensation keeps showing up in every sale.',
+          price: '$11.99',
+          image: asset('deck-balatro.jpg'),
+          releaseDate: 'On Sale Now',
+          platforms: ['windows', 'mac'],
+          topTags: ['Deckbuilding', 'Roguelike', 'Strategy', 'Indie'],
+          screenshots: [asset('cheap-breach.jpg'), asset('cheap-slay.jpg'), asset('cheap-hike.jpg'), asset('cheap-metro.jpg')],
+          reviewSummary: 'Overwhelmingly Positive',
+          reviewCount: '83,412',
+          discountPercent: 20,
+          originalPrice: '$14.99'
+        },
+        {
+          title: 'Baba Is You',
+          description: 'Brilliant rule-bending puzzles at a tiny price.',
+          price: '$10.49',
+          image: asset('cheap-slay.jpg'),
+          releaseDate: 'On Sale Now',
+          platforms: ['windows', 'mac', 'linux'],
+          topTags: ['Puzzle', 'Logic', 'Indie', 'Creative'],
+          screenshots: [asset('cheap-slay.jpg'), asset('cheap-metro.jpg'), asset('cheap-hike.jpg'), asset('cheap-breach.jpg')],
+          reviewSummary: 'Very Positive',
+          reviewCount: '18,225',
+          discountPercent: 30,
+          originalPrice: '$14.99'
+        },
+        {
+          title: 'Vampire Survivors',
+          description: 'Still the easiest recommendation in any deep-discount row.',
+          price: '$3.99',
+          image: asset('deck-vampire.jpg'),
+          releaseDate: 'On Sale Now',
+          platforms: ['windows', 'mac'],
+          topTags: ['Roguelite', 'Bullet Heaven', 'Pixel Graphics', 'Indie'],
+          screenshots: [asset('cheap-slay.jpg'), asset('cheap-breach.jpg'), asset('cheap-hike.jpg'), asset('cheap-metro.jpg')],
+          reviewSummary: 'Overwhelmingly Positive',
+          reviewCount: '234,511',
+          discountPercent: 20,
+          originalPrice: '$4.99'
+        },
+        {
+          title: 'Hollow Knight',
+          description: 'Metroidvania masterpiece with one of the cleanest sale hooks on Steam.',
+          price: '$11.99',
+          image: asset('deal-hades2.jpg'),
+          releaseDate: 'On Sale Now',
+          platforms: ['windows', 'mac', 'linux'],
+          topTags: ['Metroidvania', 'Exploration', 'Action', 'Difficult'],
+          screenshots: [asset('ow-1.jpg'), asset('ow-3.jpg'), asset('ck3-2.jpg'), asset('cheap-hike.jpg')],
+          reviewSummary: 'Overwhelmingly Positive',
+          reviewCount: '329,004',
+          discountPercent: 20,
+          originalPrice: '$14.99'
         }
       ]
     },
@@ -1420,6 +1706,66 @@ export const rankingTabsByLocale: Record<Locale, RankingTab[]> = {
           screenshots: [asset('ck3-1.jpg'), asset('ck3-2.jpg'), asset('ck3-3.jpg'), asset('ck3-4.jpg')],
           reviewSummary: 'Very Positive',
           reviewCount: '620,114'
+        },
+        {
+          title: 'Apex Legends',
+          description: 'Hero battle royale with slide-heavy gunfights.',
+          price: 'Free To Play',
+          image: asset('vr-alyx.jpg'),
+          releaseDate: 'Now Available',
+          platforms: ['windows'],
+          topTags: ['Battle Royale', 'Hero Shooter', 'FPS', 'Free to Play'],
+          screenshots: [asset('cs2-2.jpg'), asset('cs2-3.jpg'), asset('ow-2.jpg'), asset('ow-3.jpg')],
+          reviewSummary: 'Very Positive',
+          reviewCount: '783,118'
+        },
+        {
+          title: 'THE FINALS',
+          description: 'Destruction-first arena shooter that keeps climbing back up.',
+          price: 'Free To Play',
+          image: asset('deal-cs2.jpg'),
+          releaseDate: 'Now Available',
+          platforms: ['windows'],
+          topTags: ['Arena Shooter', 'Destruction', 'Team-Based', 'Free to Play'],
+          screenshots: [asset('ow-2.jpg'), asset('cs2-3.jpg'), asset('ow-3.jpg'), asset('cs2-4.jpg')],
+          reviewSummary: 'Mostly Positive',
+          reviewCount: '178,440'
+        },
+        {
+          title: 'Yu-Gi-Oh! Master Duel',
+          description: 'Card duels, ranked ladders, and constant events.',
+          price: 'Free To Play',
+          image: asset('cheap-metro.jpg'),
+          releaseDate: 'Now Available',
+          platforms: ['windows'],
+          topTags: ['Card Game', 'Strategy', 'Online PvP', 'Free to Play'],
+          screenshots: [asset('cheap-slay.jpg'), asset('cheap-breach.jpg'), asset('cheap-hike.jpg'), asset('cheap-metro.jpg')],
+          reviewSummary: 'Very Positive',
+          reviewCount: '72,885'
+        },
+        {
+          title: 'Apex Legends',
+          description: 'Slide-heavy hero battle royale that keeps bouncing back.',
+          price: 'Free To Play',
+          image: asset('vr-alyx.jpg'),
+          releaseDate: 'Now Available',
+          platforms: ['windows'],
+          topTags: ['Battle Royale', 'Hero Shooter', 'FPS', 'Free to Play'],
+          screenshots: [asset('cs2-2.jpg'), asset('cs2-3.jpg'), asset('ow-2.jpg'), asset('ow-3.jpg')],
+          reviewSummary: 'Very Positive',
+          reviewCount: '783,118'
+        },
+        {
+          title: 'PUBG: BATTLEGROUNDS',
+          description: 'The long-running battle royale still fills every free chart.',
+          price: 'Free To Play',
+          image: asset('deal-cs2.jpg'),
+          releaseDate: 'Now Available',
+          platforms: ['windows'],
+          topTags: ['Battle Royale', 'Realistic Shooter', 'Multiplayer', 'Free to Play'],
+          screenshots: [asset('ow-4.jpg'), asset('cs2-1.jpg'), asset('cs2-4.jpg'), asset('ow-1.jpg')],
+          reviewSummary: 'Mostly Positive',
+          reviewCount: '1,528,110'
         }
       ]
     }
