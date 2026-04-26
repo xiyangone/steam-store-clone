@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { getPendingLinkHref } from '../../../app/navigation';
 import type { LanguageOption, Locale, NavItem } from '../types';
 
 type GlobalHeaderProps = {
@@ -12,8 +13,7 @@ type GlobalHeaderProps = {
   onLocaleChange: (locale: Locale) => void;
 };
 
-const STEAM_LOGO_URL =
-  'https://store.akamai.steamstatic.com/public/shared/images/header/logo_steam.svg?t=962016';
+const STEAM_LOGO_URL = `${import.meta.env.BASE_URL}steam/home/logos/logo_steam.svg`;
 
 export function GlobalHeader({
   navItems,
@@ -26,13 +26,14 @@ export function GlobalHeader({
   onLocaleChange
 }: GlobalHeaderProps) {
   const [isLanguageMenuOpen, setIsLanguageMenuOpen] = useState(false);
+  const pendingHref = getPendingLinkHref();
 
   return (
     <header className="global-header">
       <div className="global-header__inner shell">
         <div className="global-header__primary">
           <div className="global-header__brand">
-            <a className="brand-link" href="#" aria-label="Steam 主页链接">
+            <a className="brand-link" href={pendingHref} aria-label="Steam 主页链接">
               <img className="brand-link__logo" src={STEAM_LOGO_URL} alt="Steam" />
             </a>
           </div>
@@ -42,7 +43,7 @@ export function GlobalHeader({
               <a
                 key={item.label}
                 className={index === 0 ? 'is-active' : undefined}
-                href={item.href}
+                href={pendingHref}
               >
                 {item.label}
               </a>
@@ -51,13 +52,16 @@ export function GlobalHeader({
         </div>
 
         <div className="account-links">
-          <a className="install-button" href="#">
-            <span className="install-button__icon" aria-hidden="true">
-              ↓
-            </span>
+          <a className="install-button" href={pendingHref}>
+            <img
+              className="install-button__icon"
+              src={`${import.meta.env.BASE_URL}steam/home/icons/install_steam_download.png`}
+              alt=""
+              aria-hidden="true"
+            />
             <span>{installLabel}</span>
           </a>
-          <a href="#">{signInLabel}</a>
+          <a href={pendingHref}>{signInLabel}</a>
           <span className="account-links__divider">|</span>
           <div className="language-picker">
             <button
@@ -65,12 +69,16 @@ export function GlobalHeader({
               className="lang-button"
               aria-label={languageLabel}
               aria-expanded={isLanguageMenuOpen}
+              aria-haspopup="menu"
               onClick={() => setIsLanguageMenuOpen((value) => !value)}
             >
               <span>{languageLabel}</span>
-              <span className="lang-button__caret" aria-hidden="true">
-                ▾
-              </span>
+              <img
+                className="lang-button__caret"
+                src={`${import.meta.env.BASE_URL}steam/home/icons/btn_arrow_down_padded.png`}
+                alt=""
+                aria-hidden="true"
+              />
             </button>
 
             {isLanguageMenuOpen ? (

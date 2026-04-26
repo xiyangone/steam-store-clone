@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import type { FeaturedGame } from '../types';
 
 type FeaturedCarouselProps = {
@@ -17,7 +17,22 @@ export function FeaturedCarousel({
   nextLabel
 }: FeaturedCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(initialIndex);
-  const activeSlide = slides[currentIndex];
+  useEffect(() => {
+    setCurrentIndex((index) => {
+      if (slides.length === 0) {
+        return 0;
+      }
+
+      return Math.min(index, slides.length - 1);
+    });
+  }, [slides.length]);
+
+  if (slides.length === 0) {
+    return null;
+  }
+
+  const safeCurrentIndex = Math.min(currentIndex, slides.length - 1);
+  const activeSlide = slides[safeCurrentIndex];
 
   const move = (direction: number) => {
     setCurrentIndex((index) => (index + direction + slides.length) % slides.length);
@@ -90,8 +105,8 @@ export function FeaturedCarousel({
               key={slide.title}
               type="button"
               role="tab"
-              aria-selected={index === currentIndex}
-              className={index === currentIndex ? 'slider__dot is-active' : 'slider__dot'}
+              aria-selected={index === safeCurrentIndex}
+              className={index === safeCurrentIndex ? 'slider__dot is-active' : 'slider__dot'}
               onClick={() => setCurrentIndex(index)}
             >
               <span className="sr-only">{slide.title}</span>

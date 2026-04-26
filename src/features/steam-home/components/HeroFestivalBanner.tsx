@@ -1,3 +1,4 @@
+import { getPendingLinkHref } from '../../../app/navigation';
 import type { HeroSlide } from '../types';
 
 type HeroFestivalBannerProps = {
@@ -11,6 +12,8 @@ export function HeroFestivalBanner({
   primaryActionLabel: _primaryActionLabel,
   secondaryActionLabel: _secondaryActionLabel
 }: HeroFestivalBannerProps) {
+  const pendingHref = getPendingLinkHref();
+
   return (
     <section
       className="festival-banner shell"
@@ -51,7 +54,7 @@ export function HeroFestivalBanner({
 
         <a
           className="festival-banner__frame"
-          href={slide.href}
+          href={pendingHref}
           aria-label={slide.title}
         />
       </div>

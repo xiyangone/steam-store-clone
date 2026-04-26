@@ -1,35 +1,52 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, expect, it } from 'vitest';
-import { SteamHomePage } from './SteamHomePage';
+import { SteamHomePage, getNextCategoryStartIndex } from './SteamHomePage';
 
 describe('SteamHomePage', () => {
+  it('calculates the next category page index for wraparound and single-page cases', () => {
+    expect(getNextCategoryStartIndex(0, 1, 0)).toBe(0);
+    expect(getNextCategoryStartIndex(0, 1, 1)).toBe(1);
+    expect(getNextCategoryStartIndex(1, 1, 1)).toBe(0);
+    expect(getNextCategoryStartIndex(0, -1, 1)).toBe(1);
+  });
+
   it('switches featured slide content when navigating the carousel', async () => {
     const user = userEvent.setup();
 
     render(<SteamHomePage />);
 
     expect(
-      screen.getByRole('heading', { name: '《守望先锋®》', level: 3 })
+      screen.getByRole('heading', { name: 'Shadowverse: Worlds Beyond', level: 3 })
     ).toBeInTheDocument();
 
     await user.click(screen.getByRole('button', { name: '下一张精选内容' }));
 
     expect(
-      screen.getByRole('heading', { name: 'Crusader Kings III', level: 3 })
+      screen.getByRole('heading', { name: 'Resident Evil Requiem', level: 3 })
     ).toBeInTheDocument();
   });
 
   it('switches ranking tabs when another tab is selected', async () => {
     const user = userEvent.setup();
+    const { container } = render(<SteamHomePage />);
 
-    render(<SteamHomePage />);
+    const expectations = [
+      { tab: '人气蹿升的新品', firstTitle: '自动售货机模拟器' },
+      { tab: '热销商品', firstTitle: 'Counter-Strike 2' },
+      { tab: '热门即将推出', firstTitle: '失控车手' },
+      { tab: '优惠', firstTitle: '女神异闻录5皇家版' },
+      { tab: '人气蹿升的免费游戏', firstTitle: 'Police Chief Simulator: Prologue - Early Days' }
+    ];
 
-    const topSellerTab = screen.getByRole('tab', { name: '热销商品' });
-    await user.click(topSellerTab);
+    for (const expectation of expectations) {
+      const tab = screen.getByRole('tab', { name: expectation.tab });
+      await user.click(tab);
 
-    expect(topSellerTab).toHaveAttribute('aria-selected', 'true');
-    expect(screen.getAllByText('PRAGMATA').length).toBeGreaterThanOrEqual(2);
+      expect(tab).toHaveAttribute('aria-selected', 'true');
+      expect(container.querySelectorAll('.ranking-row')).toHaveLength(10);
+      expect(screen.getAllByText(expectation.firstTitle).length).toBeGreaterThanOrEqual(1);
+    }
   });
 
   it('renders featured artwork from local assets so the hero is always visible', () => {
@@ -48,7 +65,7 @@ describe('SteamHomePage', () => {
 
     expect(headerLogo).toHaveAttribute(
       'src',
-      'https://store.akamai.steamstatic.com/public/shared/images/header/logo_steam.svg?t=962016'
+      '/steam/home/logos/logo_steam.svg'
     );
     expect(screen.getByRole('navigation', { name: '全局菜单' })).toBeInTheDocument();
     expect(screen.getByRole('search')).toBeInTheDocument();
@@ -94,5 +111,23 @@ describe('SteamHomePage', () => {
     expect(container.querySelector('.featured-carousel .home-slider-arrow')).not.toBeNull();
     expect(container.querySelector('.promo-section .home-slider-arrow')).not.toBeNull();
     expect(container.querySelector('.category-browser .home-slider-arrow')).not.toBeNull();
+  });
+
+  it('cycles category tiles with arrows and page dots', async () => {
+    const user = userEvent.setup();
+
+    render(<SteamHomePage />);
+
+    expect(screen.getByText('开放世界生存制作')).toBeInTheDocument();
+    expect(screen.queryByText('轻松解谜与治愈')).not.toBeInTheDocument();
+
+    await user.click(screen.getByRole('button', { name: '按类别浏览 下一页' }));
+    expect(screen.getByText('轻松解谜与治愈')).toBeInTheDocument();
+
+    await user.click(screen.getByRole('button', { name: '按类别浏览 上一页' }));
+    expect(screen.getByText('开放世界生存制作')).toBeInTheDocument();
+
+    await user.click(screen.getByRole('tab', { name: '按类别浏览 第 2 页' }));
+    expect(screen.getByText('轻松解谜与治愈')).toBeInTheDocument();
   });
 });

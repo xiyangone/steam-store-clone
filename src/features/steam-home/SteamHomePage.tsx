@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { getPendingLinkHref } from '../../app/navigation';
 import {
   browseLinksByLocale,
   categoryTilesByLocale,
@@ -6,8 +7,8 @@ import {
   creatorCardsByLocale,
   dealCardsByLocale,
   discoveryQueueByLocale,
-  featuredGamesByLocale,
   footerGroupsByLocale,
+  featuredGamesByLocale,
   hardwareBannerByLocale,
   heroSlidesByLocale,
   languageOptions,
@@ -33,14 +34,27 @@ import { TabbedRankingSection } from './components/TabbedRankingSection';
 
 import type { Locale } from './types';
 
+export function getNextCategoryStartIndex(currentIndex: number, direction: number, maxIndex: number) {
+  if (maxIndex === 0) {
+    return 0;
+  }
+
+  if (direction > 0) {
+    return currentIndex >= maxIndex ? 0 : currentIndex + 1;
+  }
+
+  return currentIndex <= 0 ? maxIndex : currentIndex - 1;
+}
+
 export function SteamHomePage() {
+  const pendingHref = getPendingLinkHref();
   const [locale, setLocale] = useState<Locale>('zh-CN');
   const [categoryStartIndex, setCategoryStartIndex] = useState(0);
   const labels = steamHomeLabels[locale];
   const topNavItems = topNavItemsByLocale[locale];
   const storeMenuGroups = storeMenuGroupsByLocale[locale];
-  const heroSlides = heroSlidesByLocale[locale];
   const featuredGames = featuredGamesByLocale[locale];
+  const heroSlides = heroSlidesByLocale[locale];
   const dealCards = dealCardsByLocale[locale];
   const categoryTiles = categoryTilesByLocale[locale];
   const steamDeckCards = steamDeckCardsByLocale[locale];
@@ -63,17 +77,7 @@ export function SteamHomePage() {
   );
 
   const moveCategory = (direction: number) => {
-    if (categoryMaxIndex === 0) {
-      return;
-    }
-
-    setCategoryStartIndex((index) => {
-      if (direction > 0) {
-        return index >= categoryMaxIndex ? 0 : index + 1;
-      }
-
-      return index <= 0 ? categoryMaxIndex : index - 1;
-    });
+    setCategoryStartIndex((index) => getNextCategoryStartIndex(index, direction, categoryMaxIndex));
   };
 
   return (
@@ -133,7 +137,7 @@ export function SteamHomePage() {
                 {visibleCategoryTiles.map((tile) => (
                   <a
                     key={tile.title}
-                    href="#"
+                    href={pendingHref}
                     className="category-tile"
                     style={{ '--tile-accent': tile.accent } as React.CSSProperties}
                   >
@@ -198,7 +202,7 @@ export function SteamHomePage() {
             </div>
             <div className="button_container browse-links__row">
               {browseLinks.map((link) => (
-                <a key={link.label} href={link.href} className="big_button">
+                <a key={link.label} href={pendingHref} className="big_button">
                   {link.label}
                 </a>
               ))}
@@ -247,12 +251,12 @@ export function SteamHomePage() {
         <div className="home_page_content home_page_sign_in_ctn__inner">
           <p className="home_page_sign_in_ctn__prompt">{labels.preFooterPrompt}</p>
           <h2 className="home_page_sign_in_ctn__title">{labels.preFooterTitle}</h2>
-          <a className="home_page_sign_in_ctn__button" href="#">
+          <a className="home_page_sign_in_ctn__button" href={pendingHref}>
             {labels.preFooterLoginLabel}
           </a>
           <div className="home_page_sign_in_ctn__register" role="note" aria-label="注册提示">
             <span>{labels.preFooterRegisterPrefix}</span>
-            <a href="#">注册</a>
+            <a href={pendingHref}>注册</a>
             <span>并免费加入 Steam</span>
           </div>
         </div>

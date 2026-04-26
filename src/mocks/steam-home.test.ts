@@ -16,7 +16,7 @@ describe('steam home asset paths', () => {
     const { featuredGamesByLocale, underThousandCardsByLocale } = await import('./steam-home');
 
     expect(featuredGamesByLocale['zh-CN'][0].hero).toBe(
-      '/steam-store-clone/steam/home/ow-hero.jpg'
+      '/steam-store-clone/steam/home/featured/featured-zh-shadowverse-hero.jpg'
     );
     expect(underThousandCardsByLocale['zh-CN'][0].image).toBe(
       '/steam-store-clone/steam/home/cheap-slay.jpg'

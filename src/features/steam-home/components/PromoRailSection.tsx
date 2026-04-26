@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { getPendingLinkHref } from '../../../app/navigation';
 import type { PromoCard } from '../types';
 
 type PromoRailSectionProps = {
@@ -9,6 +10,18 @@ type PromoRailSectionProps = {
   className?: string;
 };
 
+export function getNextPromoStartIndex(currentIndex: number, direction: number, maxIndex: number) {
+  if (maxIndex === 0) {
+    return 0;
+  }
+
+  if (direction > 0) {
+    return currentIndex >= maxIndex ? 0 : currentIndex + 1;
+  }
+
+  return currentIndex <= 0 ? maxIndex : currentIndex - 1;
+}
+
 export function PromoRailSection({
   title,
   cards,
@@ -16,6 +29,7 @@ export function PromoRailSection({
   variant = 'sale-grid',
   className
 }: PromoRailSectionProps) {
+  const pendingHref = getPendingLinkHref();
   const preferredCount = variant === 'sale-grid' ? 3 : 4;
   const visibleCount = Math.min(preferredCount, cards.length);
   const maxIndex = Math.max(0, cards.length - visibleCount);
@@ -24,17 +38,7 @@ export function PromoRailSection({
   const visibleCards = cards.slice(startIndex, startIndex + visibleCount);
 
   const move = (direction: number) => {
-    if (maxIndex === 0) {
-      return;
-    }
-
-    setStartIndex((index) => {
-      if (direction > 0) {
-        return index >= maxIndex ? 0 : index + 1;
-      }
-
-      return index <= 0 ? maxIndex : index - 1;
-    });
+    setStartIndex((index) => getNextPromoStartIndex(index, direction, maxIndex));
   };
 
   return (
@@ -42,7 +46,7 @@ export function PromoRailSection({
       <div className="home_page_content">
         <div className="section-heading section-heading--spread">
           <h2 className="home_page_content_title">{title}</h2>
-          {actionLabel ? <a className="section-link" href="#">{actionLabel}</a> : null}
+          {actionLabel ? <a className="section-link" href={pendingHref}>{actionLabel}</a> : null}
         </div>
         <div className="promo-rail__stage">
           {maxIndex > 0 ? (
@@ -55,11 +59,11 @@ export function PromoRailSection({
           ) : null}
           <div className="promo-rail" role="list">
             {visibleCards.map((card) => (
-              <article
+              <a
                 key={card.title}
                 className="promo-card sale_capsule"
                 role="listitem"
-                tabIndex={0}
+                href={pendingHref}
               >
                 <div className="promo-card__imageWrap">
                   <img src={card.image} alt={card.title} loading="lazy" />
@@ -73,7 +77,7 @@ export function PromoRailSection({
                     {card.price ? <span>{card.price}</span> : null}
                   </div>
                 </div>
-              </article>
+              </a>
             ))}
           </div>
           {maxIndex > 0 ? (

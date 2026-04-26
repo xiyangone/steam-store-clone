@@ -1,3 +1,4 @@
+import { getPendingLinkHref } from '../../../app/navigation';
 import type { DiscoveryQueueItem } from '../types';
 
 type DiscoveryQueueSectionProps = {
@@ -11,18 +12,20 @@ export function DiscoveryQueueSection({
   actionLabel,
   item
 }: DiscoveryQueueSectionProps) {
+  const pendingHref = getPendingLinkHref();
+
   return (
     <section className="home_ctn discovery_queue_ctn">
       <div className="home_page_content">
         <div className="discovery_queue_ctn__header">
           <h2 className="home_page_content_title">{title}</h2>
-          <a className="section-link" href="#">
+          <a className="section-link" href={pendingHref}>
             {actionLabel}
           </a>
         </div>
 
         <div className="discovery_queue_static">
-          <a className="discovery_queue_overlay" href="#" aria-label={item.title}>
+          <a className="discovery_queue_overlay" href={pendingHref} aria-label={item.title}>
             <div
               className="discovery_queue_overlay__hero"
               style={{ backgroundImage: `url(${item.hero})` }}

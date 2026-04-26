@@ -129,15 +129,10 @@
 }
 
 .install-button__icon {
-  width: 14px;
-  height: 14px;
-  border-radius: 2px;
-  background: rgba(255, 255, 255, 0.18);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.7rem;
-  line-height: 1;
+  width: 10px;
+  height: 10px;
+  object-fit: contain;
+  flex: 0 0 auto;
 }
 
 .account-links {
@@ -173,7 +168,9 @@
 }
 
 .lang-button__caret {
-  font-size: 0.6rem;
+  width: 10px;
+  height: 10px;
+  object-fit: contain;
   opacity: 0.8;
 }
 
@@ -248,10 +245,12 @@
 }
 
 .menu-group__trigger::after {
-  content: "▼";
-  font-size: 0.6rem;
+  content: "";
+  width: 10px;
+  height: 10px;
   margin-left: 5px;
-  opacity: 0.65;
+  opacity: 0.72;
+  background: center / contain no-repeat url("/steam/home/icons/btn_arrow_down_padded.png");
 }
 
 .menu-group__panel {
@@ -273,10 +272,16 @@
 }
 
 .menu-group:hover .menu-group__panel,
-.menu-group:focus-within .menu-group__panel {
+.menu-group:focus-within .menu-group__panel,
+.menu-group__panel.is-open {
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
+}
+
+.menu-group__trigger.is-open {
+  color: #ffffff;
+  background: linear-gradient(90deg, rgba(103, 193, 245, 0.2), rgba(103, 193, 245, 0.05));
 }
 
 .menu-group__featured {
@@ -901,23 +906,23 @@
 }
 
 .category-browser__grid .category-tile:nth-child(1) {
-  --category-image: url("https://store.fastly.steamstatic.com/categories/homepageimage/category/exploration_open_world?cc=us&l=schinese&v=2");
+  --category-image: var(--steam-home-category-exploration);
 }
 
 .category-browser__grid .category-tile:nth-child(2) {
-  --category-image: url("https://store.fastly.steamstatic.com/categories/homepageimage/category/strategy_cities_settlements?cc=us&l=schinese&v=2");
+  --category-image: var(--steam-home-category-cities);
 }
 
 .category-browser__grid .category-tile:nth-child(3) {
-  --category-image: url("https://store.fastly.steamstatic.com/categories/homepageimage/category/strategy?cc=us&l=schinese&v=2");
+  --category-image: var(--steam-home-category-strategy);
 }
 
 .category-browser__grid .category-tile:nth-child(4) {
-  --category-image: url("https://store.fastly.steamstatic.com/categories/homepageimage/category/rpg?cc=us&l=schinese&v=2");
+  --category-image: var(--steam-home-category-rpg);
 }
 
 .category-browser__grid .category-tile:nth-child(5) {
-  --category-image: url("https://store.fastly.steamstatic.com/categories/homepageimage/category/puzzle_matching/?cc=us&l=schinese&v=2");
+  --category-image: var(--steam-home-category-puzzle);
 }
 
 .browse-links__row {
@@ -1061,13 +1066,13 @@
 
 .ranking-row__button {
   width: 100%;
-  min-height: 98px;
+  min-height: 69px;
   padding: 0;
   border: 0;
   background: transparent;
   color: inherit;
   display: grid;
-  grid-template-columns: 232px minmax(0, 1fr) 128px;
+  grid-template-columns: 184px minmax(0, 1fr) 112px;
   align-items: stretch;
   text-align: left;
   cursor: pointer;
@@ -1075,7 +1080,7 @@
 
 .ranking-row__image {
   width: 100%;
-  height: 98px;
+  height: 69px;
   object-fit: cover;
   display: block;
 }
@@ -1083,29 +1088,29 @@
 .ranking-row__content {
   position: relative;
   min-width: 0;
-  padding: 10px 12px 12px 18px;
+  padding: 8px 10px 8px 14px;
 }
 
 .tab_item_name {
   margin: 0;
-  font-size: 18px;
-  line-height: 1.2;
+  font-size: 14px;
+  line-height: 1.15;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
 .ranking-row__meta {
-  margin-top: 7px;
+  margin-top: 5px;
   display: grid;
-  gap: 6px;
+  gap: 3px;
 }
 
 .ranking-row__meta p {
   margin: 0;
   color: #7a8b9d;
-  font-size: 13px;
-  line-height: 1.35;
+  font-size: 12px;
+  line-height: 1.2;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -1113,37 +1118,38 @@
 
 .ranking-row__platforms {
   display: flex;
-  gap: 4px;
+  gap: 3px;
   color: #93a7b8;
 }
 
 .platform-icon {
-  width: 16px;
-  height: 16px;
+  width: 14px;
+  height: 14px;
   display: block;
 }
 
 .ranking-row__release {
-  bottom: 10px;
-  right: 12px;
+  position: absolute;
+  bottom: 6px;
+  right: 10px;
   color: #5a7894;
-  font-size: 12px;
+  font-size: 10px;
 }
 
 .ranking-row__pricing {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 6px;
-  padding: 10px 16px 10px 0;
+  gap: 4px;
+  padding: 8px 12px 8px 0;
   min-width: 0;
 }
 
 .ranking-row__discount-badge {
-  min-width: 64px;
-  padding: 9px 8px;
+  min-width: 54px;
+  padding: 6px 6px;
   text-align: center;
-  font-size: 14px;
+  font-size: 13px;
   line-height: 1;
 }
 
@@ -1166,7 +1172,7 @@
 
 .ranking-row__final-price--plain {
   color: #ffffff;
-  font-size: 17px;
+  font-size: 13px;
   line-height: 1.2;
   white-space: nowrap;
 }
@@ -1185,11 +1191,11 @@
 }
 
 .rankings__preview {
-  padding: 18px 14px 14px;
+  padding: 14px 12px 12px;
   border-radius: 4px;
   background: linear-gradient(180deg, #b4cbdf 0%, #89a9c3 100%);
   box-shadow: var(--shadow);
-  height: 100%;
+  height: 732px;
   min-height: 0;
   display: grid;
   grid-template-rows: auto auto auto minmax(0, 1fr);
@@ -1201,14 +1207,14 @@
   margin: 0;
   color: #1f2d3c;
   font-family: var(--steam-ui-font);
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 400;
   line-height: 1.3;
 }
 
 .rankings__preview-review {
-  margin-top: 16px;
-  padding: 10px 12px;
+  margin-top: 12px;
+  padding: 8px 10px;
   background: rgba(57, 76, 95, 0.62);
   border-radius: 2px;
   display: grid;
@@ -1217,39 +1223,39 @@
 
 .rankings__preview-review-label {
   color: #dbe8f4;
-  font-size: 13px;
+  font-size: 12px;
   line-height: 1.2;
 }
 
 .rankings__preview-review strong,
 .rankings__preview-review span:last-child {
   color: #66c0f4;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 500;
 }
 
 .rankings__preview-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
-  margin-top: 14px;
+  gap: 4px;
+  margin-top: 10px;
 }
 
 .rankings__preview-tag {
   display: inline-flex;
   align-items: center;
-  min-height: 28px;
-  padding: 0 12px;
+  min-height: 24px;
+  padding: 0 10px;
   background: rgba(79, 107, 132, 0.34);
   color: #e5f0f8;
-  font-size: 13px;
+  font-size: 12px;
 }
 
 .rankings__preview-screens {
-  margin-top: 12px;
+  margin-top: 10px;
   display: grid;
   grid-template-rows: repeat(4, minmax(0, 1fr));
-  gap: 8px;
+  gap: 6px;
   min-height: 0;
 }
 
@@ -1263,9 +1269,9 @@
 }
 
 .rankings__footer {
-  min-height: 45px;
+  min-height: 35px;
   margin-top: 0;
-  padding: 0 16px;
+  padding: 0 12px;
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-top: 0;
   background: #1a2430;
@@ -1273,19 +1279,19 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 12px;
+  gap: 10px;
   color: #c6d4df;
   font-family: var(--steam-ui-font);
-  font-size: 13px;
+  font-size: 12px;
 }
 
 .rankings__footer-link {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 72px;
-  min-height: 30px;
-  padding: 0 14px;
+  min-width: 68px;
+  min-height: 26px;
+  padding: 0 12px;
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 2px;
   color: #ffffff;
@@ -1321,7 +1327,7 @@
 .hardware_steamdeck_banner {
   position: relative;
   display: block;
-  aspect-ratio: 235 / 44;
+  aspect-ratio: 94 / 25;
   overflow: hidden;
   background: #000;
   border: 1px solid rgba(255, 255, 255, 0.06);
@@ -1335,7 +1341,7 @@
   height: 100%;
   display: block;
   position: relative;
-  object-fit: cover;
+  object-fit: contain;
   background: #000;
 }
 

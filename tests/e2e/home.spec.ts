@@ -3,6 +3,7 @@ import { expect, test } from '@playwright/test';
 test('renders the Steam storefront hero and key sections', async ({ page }) => {
   await page.goto('/');
 
+  await expect(page.locator('link[rel="icon"]')).toHaveAttribute('href', '/steam/home/logos/favicon.ico');
   await expect(page.getByRole('link', { name: '商店' })).toBeVisible();
   await expect(page.locator('.festival-banner__video')).toBeVisible();
   await expect(
@@ -193,6 +194,9 @@ test('keeps the header compact and the featured carousel at a stable size', asyn
   expect(before.featuredWidth).toBeLessThanOrEqual(950);
   expect(before.featuredHeight).toBeGreaterThanOrEqual(375);
   expect(before.featuredHeight).toBeLessThanOrEqual(385);
+  const hardwareBanner = await page.locator('.hardware_steamdeck_banner').boundingBox();
+  expect(hardwareBanner?.height ?? 0).toBeGreaterThanOrEqual(248);
+  expect(hardwareBanner?.height ?? 0).toBeLessThanOrEqual(256);
   for (const metric of before.sectionArrowMetrics) {
     expect(metric.leftHeight).toBeGreaterThanOrEqual(106);
     expect(metric.rightHeight).toBeGreaterThanOrEqual(106);
@@ -216,4 +220,58 @@ test('keeps the header compact and the featured carousel at a stable size', asyn
 
   expect(after.width).toBeCloseTo(before.featuredWidth, 0);
   expect(after.height).toBeCloseTo(before.featuredHeight, 0);
+});
+
+test('keeps the ranking tabs aligned with the live Steam row density', async ({ page }) => {
+  await page.goto('/');
+
+  const tabs = [
+    { label: '人气蹿升的新品', firstTitle: '自动售货机模拟器' },
+    { label: '热销商品', firstTitle: 'Counter-Strike 2' },
+    { label: '热门即将推出', firstTitle: '失控车手' },
+    { label: '优惠', firstTitle: '女神异闻录5皇家版' },
+    { label: '人气蹿升的免费游戏', firstTitle: 'Police Chief Simulator: Prologue - Early Days' }
+  ];
+
+  for (const tab of tabs) {
+    await page.getByRole('tab', { name: tab.label }).click();
+    await expect(page.getByText(tab.firstTitle).first()).toBeVisible();
+
+    const metrics = await page.evaluate(() => {
+      const panel = document.querySelector('.rankings__panel') as HTMLElement | null;
+      const list = document.querySelector('.rankings__list') as HTMLElement | null;
+      const footer = document.querySelector('.rankings__footer') as HTMLElement | null;
+      const preview = document.querySelector('.rankings__preview') as HTMLElement | null;
+      const firstRow = document.querySelector('.ranking-row') as HTMLElement | null;
+
+      if (!panel || !list || !footer || !preview || !firstRow) {
+        throw new Error('Expected rankings panel was not rendered');
+      }
+
+      const listRect = list.getBoundingClientRect();
+      const footerRect = footer.getBoundingClientRect();
+      const previewRect = preview.getBoundingClientRect();
+      const rowRect = firstRow.getBoundingClientRect();
+
+      return {
+        rowCount: document.querySelectorAll('.ranking-row').length,
+        rowHeight: rowRect.height,
+        listHeight: listRect.height,
+        footerHeight: footerRect.height,
+        previewHeight: previewRect.height,
+        totalDelta: Math.abs(listRect.height + footerRect.height - previewRect.height)
+      };
+    });
+
+    expect(metrics.rowCount).toBe(10);
+    expect(metrics.rowHeight).toBeGreaterThanOrEqual(67);
+    expect(metrics.rowHeight).toBeLessThanOrEqual(72);
+    expect(metrics.listHeight).toBeGreaterThanOrEqual(695);
+    expect(metrics.listHeight).toBeLessThanOrEqual(705);
+    expect(metrics.footerHeight).toBeGreaterThanOrEqual(34);
+    expect(metrics.footerHeight).toBeLessThanOrEqual(38);
+    expect(metrics.previewHeight).toBeGreaterThanOrEqual(730);
+    expect(metrics.previewHeight).toBeLessThanOrEqual(734);
+    expect(metrics.totalDelta).toBeLessThanOrEqual(4);
+  }
 });

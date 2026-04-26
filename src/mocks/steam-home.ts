@@ -12,34 +12,42 @@ import type {
   RankingTab,
   StoreMenuGroup
 } from '../features/steam-home/types';
+import { steamHomeAsset } from '../features/steam-home/assets';
 
-const asset = (name: string) => `${import.meta.env.BASE_URL}steam/home/${name}`;
+const asset = (name: string) => steamHomeAsset(name);
 
-const medievalFestivalAssets = {
-  href: 'https://store.steampowered.com/category/medieval?l=schinese',
-  videoWebm:
-    'https://shared.fastly.steamstatic.com/store_item_assets/steam/clusters/frontpage/1f5bf11f60ba74359c5c42a9/3984fe0ba11cede732b28ad46023d408104ddaa2/webm_page_bg_schinese.webm?t=1776282445',
-  videoMp4:
-    'https://shared.fastly.steamstatic.com/store_item_assets/steam/clusters/frontpage/1f5bf11f60ba74359c5c42a9/a52ddc578059614fbb54cc921ddb4b83854fc3cb/mp4_page_bg_schinese.mp4?t=1776282445',
-  desktopImage:
-    'https://shared.fastly.steamstatic.com/store_item_assets/steam/clusters/frontpage/1f5bf11f60ba74359c5c42a9/3ed450c173ca391bd1236da4b670b6bda779c286/page_bg_schinese.jpg?t=1776282445',
-  mobileImage:
-    'https://shared.fastly.steamstatic.com/store_item_assets/steam/clusters/frontpage/1f5bf11f60ba74359c5c42a9/e2340faee4b2dddfacaf45406f7dbac695fd0d12/page_bg_mobile_schinese.jpg?t=1776282445'
+const eaPublisherSaleZhAssets = {
+  href: 'https://store.steampowered.com/sale/eapublishersale?snr=1_4_4__118',
+  videoWebm: steamHomeAsset('videos/festival-bg.webm'),
+  videoMp4: steamHomeAsset('videos/festival-bg.mp4'),
+  desktopImage: steamHomeAsset('images/festival-bg-zh.jpg'),
+  mobileImage: steamHomeAsset('images/festival-bg-zh.jpg')
 } as const;
 
-const steamDeckBannerAssets = {
-  desktopPoster:
-    'https://shared.fastly.steamstatic.com/store_item_assets/steam/clusters/sale_autumn2019_assets/54b5034d397baccb93181cc6/deck_banner_animated_static_schinese.jpg?t=1773681984',
-  desktopVideoWebm:
-    'https://shared.fastly.steamstatic.com/store_item_assets/steam/clusters/sale_autumn2019_assets/54b5034d397baccb93181cc6/deck_banner_animated_webm_schinese.webm?t=1773681984',
-  desktopVideoMp4:
-    'https://shared.fastly.steamstatic.com/store_item_assets/steam/clusters/sale_autumn2019_assets/54b5034d397baccb93181cc6/deck_banner_animated_mp4_schinese.mp4?t=1773681984',
-  mobilePoster:
-    'https://shared.fastly.steamstatic.com/store_item_assets/steam/clusters/sale_autumn2019_assets/54b5034d397baccb93181cc6/deck_banner_animated_static_mobile_schinese.jpg?t=1773681984',
-  mobileVideoWebm:
-    'https://shared.fastly.steamstatic.com/store_item_assets/steam/clusters/sale_autumn2019_assets/54b5034d397baccb93181cc6/deck_banner_animated_webm_mobile_schinese.webm?t=1773681984',
-  mobileVideoMp4:
-    'https://shared.fastly.steamstatic.com/store_item_assets/steam/clusters/sale_autumn2019_assets/54b5034d397baccb93181cc6/deck_banner_animated_mp4_mobile_schinese.mp4?t=1773681984'
+const eaPublisherSaleEnAssets = {
+  href: 'https://store.steampowered.com/sale/eapublishersale?snr=1_4_4__118',
+  videoWebm: steamHomeAsset('videos/festival-bg-en.webm'),
+  videoMp4: steamHomeAsset('videos/festival-bg-en.mp4'),
+  desktopImage: steamHomeAsset('images/festival-bg-en.jpg'),
+  mobileImage: steamHomeAsset('images/festival-bg-en.jpg')
+} as const;
+
+const steamDeckBannerZhAssets = {
+  desktopPoster: steamHomeAsset('images/steamdeck-banner-desktop.jpg'),
+  desktopVideoWebm: steamHomeAsset('videos/steamdeck-banner-desktop.webm'),
+  desktopVideoMp4: steamHomeAsset('videos/steamdeck-banner-desktop.mp4'),
+  mobilePoster: steamHomeAsset('images/steamdeck-banner-mobile.jpg'),
+  mobileVideoWebm: steamHomeAsset('videos/steamdeck-banner-mobile.webm'),
+  mobileVideoMp4: steamHomeAsset('videos/steamdeck-banner-mobile.mp4')
+} as const;
+
+const steamDeckBannerEnAssets = {
+  desktopPoster: steamHomeAsset('images/steamdeck-banner-desktop-en.jpg'),
+  desktopVideoWebm: steamHomeAsset('videos/steamdeck-banner-desktop-en.webm'),
+  desktopVideoMp4: steamHomeAsset('videos/steamdeck-banner-desktop-en.mp4'),
+  mobilePoster: steamHomeAsset('images/steamdeck-banner-mobile-en.jpg'),
+  mobileVideoWebm: steamHomeAsset('videos/steamdeck-banner-mobile-en.webm'),
+  mobileVideoMp4: steamHomeAsset('videos/steamdeck-banner-mobile-en.mp4')
 } as const;
 
 export const languageOptions: LanguageOption[] = [
@@ -92,7 +100,7 @@ export const storeMenuGroupsByLocale: Record<Locale, StoreMenuGroup[]> = {
     {
       label: '特别栏目',
       featured: '每周策展与活动专题',
-      items: ['新品节', '发行商特卖', '中世纪游戏节', '演示体验']
+      items: ['新品节', 'EA 发行商特卖', 'Electronic Arts', '演示体验']
     }
   ],
   'en-US': [
@@ -124,7 +132,7 @@ export const storeMenuGroupsByLocale: Record<Locale, StoreMenuGroup[]> = {
     {
       label: 'Specials',
       featured: 'Curated events and weekly showcases',
-      items: ['Festivals', 'Publisher Sales', 'Medieval Fest', 'Demos']
+      items: ['Festivals', 'EA Publisher Sale', 'Electronic Arts', 'Demos']
     }
   ]
 };
@@ -132,33 +140,32 @@ export const storeMenuGroupsByLocale: Record<Locale, StoreMenuGroup[]> = {
 export const heroSlidesByLocale: Record<Locale, HeroSlide[]> = {
   'zh-CN': [
     {
-      title: '2026 年 Steam 中世纪游戏节',
-      subtitle: '限时专题活动，精选动作、策略与王国经营游戏。',
-      eyebrow: '专题活动',
-      href: medievalFestivalAssets.href,
+      title: 'Electronic Arts 发行商特卖',
+      subtitle: 'EA SPORTS FC™ 26、Apex Legends™ 与更多 EA 作品现已集中登场。',
+      eyebrow: '发行商特卖',
+      href: eaPublisherSaleZhAssets.href,
       background:
-        'linear-gradient(135deg, rgba(226,210,169,0.95), rgba(122,83,46,0.94))',
-      accent: '#d9b36b',
-      videoWebm: medievalFestivalAssets.videoWebm,
-      videoMp4: medievalFestivalAssets.videoMp4,
-      desktopImage: medievalFestivalAssets.desktopImage,
-      mobileImage: medievalFestivalAssets.mobileImage
+        'linear-gradient(135deg, rgba(10,16,28,0.96), rgba(35,78,126,0.9))',
+      accent: '#67c1f5',
+      videoWebm: eaPublisherSaleZhAssets.videoWebm,
+      videoMp4: eaPublisherSaleZhAssets.videoMp4,
+      desktopImage: eaPublisherSaleZhAssets.desktopImage,
+      mobileImage: eaPublisherSaleZhAssets.mobileImage
     }
   ],
   'en-US': [
     {
-      title: 'Steam Medieval Fest 2026',
-      subtitle:
-        'A limited-time event spotlighting action, strategy, and kingdom builders.',
-      eyebrow: 'Special Event',
-      href: medievalFestivalAssets.href,
+      title: 'Electronic Arts Publisher Sale',
+      subtitle: 'Jump into featured EA deals, live-service staples, and new release spotlights.',
+      eyebrow: 'Publisher Sale',
+      href: eaPublisherSaleEnAssets.href,
       background:
-        'linear-gradient(135deg, rgba(226,210,169,0.95), rgba(122,83,46,0.94))',
-      accent: '#d9b36b',
-      videoWebm: medievalFestivalAssets.videoWebm,
-      videoMp4: medievalFestivalAssets.videoMp4,
-      desktopImage: medievalFestivalAssets.desktopImage,
-      mobileImage: medievalFestivalAssets.mobileImage
+        'linear-gradient(135deg, rgba(10,16,28,0.96), rgba(35,78,126,0.9))',
+      accent: '#67c1f5',
+      videoWebm: eaPublisherSaleEnAssets.videoWebm,
+      videoMp4: eaPublisherSaleEnAssets.videoMp4,
+      desktopImage: eaPublisherSaleEnAssets.desktopImage,
+      mobileImage: eaPublisherSaleEnAssets.mobileImage
     }
   ]
 };
@@ -166,84 +173,84 @@ export const heroSlidesByLocale: Record<Locale, HeroSlide[]> = {
 export const featuredGamesByLocale: Record<Locale, FeaturedGame[]> = {
   'zh-CN': [
     {
-      title: '《守望先锋®》',
+      title: 'Shadowverse: Worlds Beyond',
       status: '现已推出',
       price: '免费开玩',
-      hero: asset('ow-hero.jpg'),
+      hero: asset('featured/featured-zh-shadowverse-hero.jpg'),
       screenshots: [
-        asset('ow-1.jpg'),
-        asset('ow-2.jpg'),
-        asset('ow-3.jpg'),
-        asset('ow-4.jpg')
+        asset('featured/featured-zh-shadowverse-1.jpg'),
+        asset('featured/featured-zh-shadowverse-2.jpg'),
+        asset('featured/featured-zh-shadowverse-3.jpg'),
+        asset('featured/featured-zh-shadowverse-4.jpg')
       ],
-      tags: ['团队射击', '免费开玩', '多人合作']
+      tags: ['卡牌对战', '免费开玩', '动漫风格']
     },
     {
-      title: 'Crusader Kings III',
+      title: 'Resident Evil Requiem',
       status: '现已推出',
-      price: '¥ 2,097',
-      hero: asset('ck3-hero.jpg'),
+      price: '¥ 8,990',
+      hero: asset('featured/featured-zh-requiem-hero.jpg'),
       screenshots: [
-        asset('ck3-1.jpg'),
-        asset('ck3-2.jpg'),
-        asset('ck3-3.jpg'),
-        asset('ck3-4.jpg')
+        asset('featured/featured-zh-requiem-1.jpg'),
+        asset('featured/featured-zh-requiem-2.jpg'),
+        asset('featured/featured-zh-requiem-3.jpg'),
+        asset('featured/featured-zh-requiem-4.jpg')
       ],
-      tags: ['大战略', '中世纪', '角色扮演']
+      tags: ['生存恐怖', '剧情驱动', '单人']
     },
     {
-      title: 'Counter-Strike 2',
+      title: '女神异闻录３ Reload',
       status: '热销商品',
-      price: '免费开玩',
-      hero: asset('cs2-hero.jpg'),
+      price: '-60% ¥ 3,071',
+      hero: asset('featured/featured-zh-p3r-hero.jpg'),
       screenshots: [
-        asset('cs2-1.jpg'),
-        asset('cs2-2.jpg'),
-        asset('cs2-3.jpg'),
-        asset('cs2-4.jpg')
+        asset('featured/featured-zh-p3r-1.jpg'),
+        asset('featured/featured-zh-p3r-2.jpg'),
+        asset('featured/featured-zh-p3r-3.jpg'),
+        asset('featured/featured-zh-p3r-4.jpg')
       ],
-      tags: ['FPS', '竞技', '饰品市场']
+      tags: ['角色扮演', '校园生活', '日式']
     }
   ],
   'en-US': [
     {
-      title: 'Overwatch® 2',
+      title: 'Resident Evil Requiem',
       status: 'Now Available',
-      price: 'Free To Play',
-      hero: asset('ow-hero.jpg'),
+      price: '¥ 8,990',
+      hero: asset('featured/featured-en-requiem-hero.jpg'),
       screenshots: [
-        asset('ow-1.jpg'),
-        asset('ow-2.jpg'),
-        asset('ow-3.jpg'),
-        asset('ow-4.jpg')
+        asset('featured/featured-en-requiem-1.jpg'),
+        asset('featured/featured-en-requiem-2.jpg'),
+        asset('featured/featured-en-requiem-3.jpg'),
+        asset('featured/featured-en-requiem-4.jpg')
       ],
-      tags: ['Hero Shooter', 'Free to Play', 'Co-op']
+      tags: ['Survival Horror', 'Story Rich', 'Singleplayer']
     },
     {
-      title: 'Crusader Kings III',
-      status: 'Now Available',
-      price: '$29.99',
-      hero: asset('ck3-hero.jpg'),
+      title: 'Team Fortress 2',
+      status: 'Just Updated!',
+      price: 'Free To Play',
+      hero: asset('featured/featured-en-tf2-hero.jpg'),
       screenshots: [
-        asset('ck3-1.jpg'),
-        asset('ck3-2.jpg'),
-        asset('ck3-3.jpg'),
-        asset('ck3-4.jpg')
+        asset('featured/featured-en-tf2-1.jpg'),
+        asset('featured/featured-en-tf2-2.jpg'),
+        asset('featured/featured-en-tf2-3.jpg'),
+        asset('featured/featured-en-tf2-4.jpg')
       ],
-      tags: ['Grand Strategy', 'Medieval', 'RPG']
+      tags: ['Hero Shooter', 'Free to Play', 'Multiplayer']
     },
     {
-      title: 'Counter-Strike 2',
-      status: 'Top Seller',
+      title: 'Starward',
+      status: 'Now Available',
       price: 'Free To Play',
-      hero: asset('cs2-hero.jpg'),
+      hero: asset('featured/featured-en-starward-hero.jpg'),
       screenshots: [
-        asset('cs2-1.jpg'),
-        asset('cs2-2.jpg'),
-        asset('cs2-3.jpg'),
-        asset('cs2-4.jpg')
+        asset('featured/featured-en-starward-1.jpg'),
+        asset('featured/featured-en-starward-2.jpg'),
+        asset('featured/featured-en-starward-3.jpg'),
+        asset('featured/featured-en-starward-4.jpg')
       ],
-      tags: ['FPS', 'Competitive', 'Marketplace']
+      tags: ['Action RPG', 'Anime', 'Free to Play']
     }
   ]
 };
@@ -398,17 +405,17 @@ export const steamDeckCardsByLocale: Record<Locale, PromoCard[]> = {
 export const hardwareBannerByLocale: Record<Locale, HardwareBanner> = {
   'zh-CN': {
     title: 'Steam Deck',
-    subtitle: '随处畅玩你的 Steam 游戏库',
-    description: '掌机、扩展坞与客厅场景无缝衔接，延续官网中段硬件横幅的视觉节奏。',
+    subtitle: '掌上畅玩你的 Steam 游戏库',
+    description: '使用今天官网首页的中文 Steam Deck 横幅视频与海报，保持中段硬件区块的官方节奏。',
     href: 'https://store.steampowered.com/app/1675200/Steam_Deck/?utm_source=steamhomev2&snr=1_4_4__147',
-    ...steamDeckBannerAssets
+    ...steamDeckBannerZhAssets
   },
   'en-US': {
     title: 'Steam Deck',
     subtitle: 'Take your Steam library anywhere',
-    description: 'A mid-page hardware banner inspired by the live storefront cadence.',
+    description: 'Use the current English Steam Deck banner media from the live storefront.',
     href: 'https://store.steampowered.com/app/1675200/Steam_Deck/?utm_source=steamhomev2&snr=1_4_4__147',
-    ...steamDeckBannerAssets
+    ...steamDeckBannerEnAssets
   }
 };
 
@@ -783,239 +790,393 @@ export const rankingTabsByLocale: Record<Locale, RankingTab[]> = {
       moreLabel: '新品',
       entries: [
         {
-          title: '夺宝砖家',
-          description: '策略、平台解谜、牌组构建、三消',
-          price: '¥ 13.80',
+          title: '自动售货机模拟器',
+          description: '工作模拟、治愈系、模拟、休闲',
+          price: '¥1,020',
           image:
-            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3020550/730d6602c8ce3b9a2867a59d8d0c8d214d7e7627/capsule_231x87_schinese.jpg?t=1776736400',
-          releaseDate: '2026 年 4 月 20 日',
-          platforms: ['windows'],
-          topTags: ['策略', '平台解谜', '牌组构建', '三消', '解谜'],
-          screenshots: [
-            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3020550/6bb655f8a8f9cbb0aca98870ab2f2b4045e85b3a/ss_6bb655f8a8f9cbb0aca98870ab2f2b4045e85b3a.600x338.jpg?t=1776736400',
-            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3020550/0a49a29825cb015028ce4be032797ea8cb6d133c/ss_0a49a29825cb015028ce4be032797ea8cb6d133c.600x338.jpg?t=1776736400',
-            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3020550/f9ad566dbe67dd8ad736e22fbc0297b9b28809a7/ss_f9ad566dbe67dd8ad736e22fbc0297b9b28809a7.600x338.jpg?t=1776736400',
-            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3020550/0de2c8688448f3b91216a52e3eaf19129ae4c07a/ss_0de2c8688448f3b91216a52e3eaf19129ae4c07a.600x338.jpg?t=1776736400'
-          ],
-          reviewSummary: '好评',
-          reviewCount: '12',
-          discountPercent: 40,
-          originalPrice: '¥ 23.00'
-        },
-        {
-          title: '地心工业线 Chipmatic',
-          description: '采矿、模拟、自动化、地下',
-          price: '¥ 31.50',
-          image:
-            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3780950/298ed34d47837ab65e6bbee198a053937d472a82/capsule_231x87_schinese.jpg?t=1776689981',
-          releaseDate: '2026 年 4 月 20 日',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3622640/52faee467d692ff5ff54ad4e23df68e9002f7156/capsule_184x69_alt_assets_0_schinese.jpg?t=1777139070',
+          releaseDate: '2026 年 4 月 25 日',
           platforms: ['windows', 'mac', 'linux'],
-          topTags: ['采矿', '模拟', '自动化', '地下', '建造'],
+          topTags: ['工作模拟', '治愈系', '模拟', '休闲'],
           screenshots: [
-            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3780950/2533c7b5fc69bbac9acd9f751861c49356f9b9b1/ss_2533c7b5fc69bbac9acd9f751861c49356f9b9b1.600x338.jpg?t=1776689981',
-            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3780950/c76e179c79ad33e38949468d5cbcabc8304a6fc4/ss_c76e179c79ad33e38949468d5cbcabc8304a6fc4.600x338.jpg?t=1776689981',
-            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3780950/e7a590c58f224b477dc5c2dfe3ca5ec361842cde/ss_e7a590c58f224b477dc5c2dfe3ca5ec361842cde.600x338.jpg?t=1776689981',
-            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3780950/f59bc7be91d397927f22f0e60b54ae145b3c1497/ss_f59bc7be91d397927f22f0e60b54ae145b3c1497.600x338.jpg?t=1776689981'
-          ],
-          reviewSummary: '新品好评',
-          reviewCount: '9',
-          discountPercent: 10,
-          originalPrice: '¥ 35.00'
-        },
-        {
-          title: 'MMO98',
-          description: '策略、模拟、点击游戏、挂机游戏',
-          price: '¥ 26.10',
-          image:
-            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3907940/7be1eb54c0a8fad89de920a974810a5b3f7d58fb/capsule_231x87.jpg?t=1776692207',
-          releaseDate: '2026 年 4 月 20 日',
-          platforms: ['windows', 'mac'],
-          topTags: ['策略', '模拟', '点击游戏', '挂机游戏'],
-          screenshots: [
-            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3907940/e87838e1aecdc87d14d8233711adf68690efcee7/ss_e87838e1aecdc87d14d8233711adf68690efcee7.600x338.jpg?t=1776692207',
-            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3907940/5b1b712c357af067dfa8bfec8b056b8fd5dd1308/ss_5b1b712c357af067dfa8bfec8b056b8fd5dd1308.600x338.jpg?t=1776692207',
-            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3907940/99950c98ebd1f0549122a6fc8f5fe943ce3241ab/ss_99950c98ebd1f0549122a6fc8f5fe943ce3241ab.600x338.jpg?t=1776692207',
-            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3907940/7920ddfe3d2e2dfa6f08e718b2b8c05c9ef29149/ss_7920ddfe3d2e2dfa6f08e718b2b8c05c9ef29149.600x338.jpg?t=1776692207'
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3622640/81178328e0140e5d404f3c3a5fb493e9f9cb28c9/ss_81178328e0140e5d404f3c3a5fb493e9f9cb28c9.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3622640/f05c02e45ccab460ff4ff2a24c6f578b6158ca80/ss_f05c02e45ccab460ff4ff2a24c6f578b6158ca80.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3622640/11e54368c38c950d9c402105715fd47e8802f77c/ss_11e54368c38c950d9c402105715fd47e8802f77c.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3622640/0371d810a604e62a3e95ef450ce1d74f6ab461b9/ss_0371d810a604e62a3e95ef450ce1d74f6ab461b9.600x338.jpg'
           ],
           reviewSummary: '特别好评',
-          reviewCount: '132',
-          discountPercent: 10,
-          originalPrice: '¥ 29.00'
+          reviewCount: '66',
+          discountPercent: 40,
+          originalPrice: '¥1,700'
         },
         {
-          title: 'All Hail the Orb',
-          description: '探索、点击游戏、挂机游戏、模拟',
-          price: '¥ 19.80',
+          title: '城堡放置',
+          description: '挂机游戏、点击游戏、塔防、休闲',
+          price: '¥405',
           image:
-            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4262310/123a4725143e6acf9e95111cefa07e485df8ebd6/capsule_231x87.jpg?t=1776685057',
-          releaseDate: '2026 年 4 月 20 日',
-          platforms: ['windows'],
-          topTags: ['探索', '点击游戏', '挂机游戏', '模拟'],
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4082900/4bc12f181f72225be3d1133b5aea5384f7d1e158/capsule_184x69_schinese.jpg?t=1777055259',
+          releaseDate: '2026 年 4 月 25 日',
+          platforms: ['windows', 'mac'],
+          topTags: ['挂机游戏', '点击游戏', '塔防', '休闲'],
           screenshots: [
-            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4262310/ce9822547e9966e06e6ae01035eb62ac6c35ab3a/ss_ce9822547e9966e06e6ae01035eb62ac6c35ab3a.600x338.jpg?t=1776685057',
-            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4262310/9e42a6119e730311bf6ef9cf637549d997864722/ss_9e42a6119e730311bf6ef9cf637549d997864722.600x338.jpg?t=1776685057',
-            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4262310/349fd102092a0f8378e220b84719ef6382cce479/ss_349fd102092a0f8378e220b84719ef6382cce479.600x338.jpg?t=1776685057',
-            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4262310/db7e0b44943e35375ced072adfb6288e08ead1f4/ss_db7e0b44943e35375ced072adfb6288e08ead1f4.600x338.jpg?t=1776685057'
-          ],
-          reviewSummary: '新品上架',
-          reviewCount: '0',
-          discountPercent: 10,
-          originalPrice: '¥ 22.00'
-        },
-        {
-          title: '掘地求狗',
-          description: '多人、在线合作、物理、类 Rogue',
-          price: '¥ 26.40',
-          image:
-            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4244510/ae3ac3509f66fe004a9a49c555f2a95c817b0ed8/capsule_231x87_schinese.jpg?t=1776707033',
-          releaseDate: '2026 年 4 月 20 日',
-          platforms: ['windows'],
-          topTags: ['多人', '在线合作', '物理', '类 Rogue'],
-          screenshots: [
-            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4244510/7466683155c61bda5940c6a80a646e5f01615a48/ss_7466683155c61bda5940c6a80a646e5f01615a48.600x338.jpg?t=1776707033',
-            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4244510/e9182c0f15ad51b2ddd4627c4d262a916ae3b9cf/ss_e9182c0f15ad51b2ddd4627c4d262a916ae3b9cf.600x338.jpg?t=1776707033',
-            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4244510/92a6e925f8780a482cd0cf5a4036d6dab4565afe/ss_92a6e925f8780a482cd0cf5a4036d6dab4565afe.600x338.jpg?t=1776707033',
-            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4244510/cb998d2a8a9d8176c183edc2f1856ea1637c7aa7/ss_cb998d2a8a9d8176c183edc2f1856ea1637c7aa7.600x338.jpg?t=1776707033'
-          ],
-          reviewSummary: '新品上架',
-          reviewCount: '0',
-          discountPercent: 20,
-          originalPrice: '¥ 33.00'
-        },
-        {
-          title: '我家有矿',
-          description: '休闲、挂机游戏、资源管理、管理',
-          price: '¥ 18.85',
-          image:
-            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3946110/1db9fb9a87a83781d5244dfa2078a1cd235af5ef/capsule_231x87_schinese.jpg?t=1776670424',
-          releaseDate: '2026 年 4 月 20 日',
-          platforms: ['windows'],
-          topTags: ['休闲', '挂机游戏', '资源管理', '管理'],
-          screenshots: [
-            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3946110/41d5743fa275d6fbd4e9f759631cf38246b179fd/ss_41d5743fa275d6fbd4e9f759631cf38246b179fd.600x338.jpg?t=1776670424',
-            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3946110/bc8adb336bac9eb0d69387f4f9eb61184eb967c7/ss_bc8adb336bac9eb0d69387f4f9eb61184eb967c7.600x338.jpg?t=1776670424',
-            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3946110/5d3b034b31d6316546d8e8d87f143b8dc10ba275/ss_5d3b034b31d6316546d8e8d87f143b8dc10ba275.600x338.jpg?t=1776670424',
-            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3946110/3b1ad78c54a746dcba6beaec1015a50a94284afc/ss_3b1ad78c54a746dcba6beaec1015a50a94284afc.600x338.jpg?t=1776670424'
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4082900/26fe1e09e1f4cdc83c344ba74d27de296bdae12e/ss_26fe1e09e1f4cdc83c344ba74d27de296bdae12e.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4082900/89467a100b9be19f6c016d4f2bad9a5c64ad90b7/ss_89467a100b9be19f6c016d4f2bad9a5c64ad90b7.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4082900/13b04b3f130794e95d7e05627792b413eac3a1e9/ss_13b04b3f130794e95d7e05627792b413eac3a1e9.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4082900/0bdadaf49f635cd72cb99fcf39d4b3415acc573a/ss_0bdadaf49f635cd72cb99fcf39d4b3415acc573a.600x338.jpg'
           ],
           reviewSummary: '好评',
-          reviewCount: '103',
-          discountPercent: 35,
-          originalPrice: '¥ 29.00'
+          reviewCount: '35',
+          discountPercent: 10,
+          originalPrice: '¥450'
         },
         {
-          title: '指尖农场',
-          description: '休闲、模拟、软件、农场模拟',
-          price: '¥ 17.99',
+          title: 'Neon Village',
+          description: '牌组构建式类 Rogue、牌组构建、类 Rogue、策略',
+          price: '¥960',
           image:
-            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4216670/d2fac71e18c141e85ddd282858e8d2f4fbd8004e/capsule_231x87_schinese.jpg?t=1776654464',
-          releaseDate: '2026 年 4 月 19 日',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2916670/4ece06b4ef99b21be9b2cf7cf6a873e7c34837d4/capsule_184x69.jpg?t=1777016485',
+          releaseDate: '2026 年 4 月 24 日',
           platforms: ['windows'],
-          topTags: ['休闲', '模拟', '软件', '农场模拟'],
+          topTags: ['牌组构建式类 Rogue', '牌组构建', '类 Rogue', '策略'],
           screenshots: [
-            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4216670/356a34e0720d1583fc11804d17fd995fb10adacd/ss_356a34e0720d1583fc11804d17fd995fb10adacd.600x338.jpg?t=1776654464',
-            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4216670/44df18ccea854bf42e6dd1df0ca09c1f79dbef1d/ss_44df18ccea854bf42e6dd1df0ca09c1f79dbef1d.600x338.jpg?t=1776654464',
-            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4216670/922f571e2ad1c204a0b5d3361d68e9e88ad4a3fb/ss_922f571e2ad1c204a0b5d3361d68e9e88ad4a3fb.600x338.jpg?t=1776654464',
-            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4216670/3ed16c8533722b8fedd626759932394947af0cf8/ss_3ed16c8533722b8fedd626759932394947af0cf8.600x338.jpg?t=1776654464'
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2916670/ss_1576815c38cd3dfc24f01246a72cd882124385d2.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2916670/1771084c4ec3b5411b470abdb8248186d9901ab0/ss_1771084c4ec3b5411b470abdb8248186d9901ab0.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2916670/eba4cd8f84b77e96b7b2e3e08dc35a4f5ef78a2e/ss_eba4cd8f84b77e96b7b2e3e08dc35a4f5ef78a2e.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2916670/81047d5e7abcc16474fff912437e58d609aab006/ss_81047d5e7abcc16474fff912437e58d609aab006.600x338.jpg'
           ],
-          reviewSummary: '新品上架',
-          reviewCount: '0',
+          reviewSummary: '特别好评',
+          reviewCount: '124',
+          discountPercent: 20,
+          originalPrice: '¥1,200'
+        },
+        {
+          title: 'Dread Trials',
+          description: '冒险、角色扮演、动作、日系角色扮演',
+          price: '¥1,620',
+          image:
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/854080/fe255646d83e7130990aea6a19d0cd486aab61fd/capsule_184x69.jpg?t=1777006836',
+          releaseDate: '2026 年 4 月 24 日',
+          platforms: ['windows'],
+          topTags: ['冒险', '角色扮演', '动作', '日系角色扮演'],
+          screenshots: [
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/854080/a006b35367ab74b1397f52951a65d3a231e8b750/ss_a006b35367ab74b1397f52951a65d3a231e8b750.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/854080/2d1f610af37be2f782b96be338c5c6371bf685f2/ss_2d1f610af37be2f782b96be338c5c6371bf685f2.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/854080/ce6dd5578d54db644f28b48c37e68690be1bae6d/ss_ce6dd5578d54db644f28b48c37e68690be1bae6d.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/854080/d11d89d24da5667e190ce7c5ce31002c5182ea1d/ss_d11d89d24da5667e190ce7c5ce31002c5182ea1d.600x338.jpg'
+          ],
+          reviewSummary: '好评',
+          reviewCount: '37',
           discountPercent: 10,
-          originalPrice: '¥ 19.99'
+          originalPrice: '¥1,800'
+        },
+        {
+          title: '晕晕电波症候群',
+          description: '节奏、心理恐怖、冒险、动漫',
+          price: '¥1,971',
+          image:
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2914150/49fc1d453e7ac6debbde3d276b158b820e5569a4/capsule_184x69_schinese.jpg?t=1777123556',
+          releaseDate: '2026 年 4 月 24 日',
+          platforms: ['windows'],
+          topTags: ['节奏', '心理恐怖', '冒险', '动漫'],
+          screenshots: [
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2914150/9111298a8e027b996f0d245a53fd9a61d05c758a/ss_9111298a8e027b996f0d245a53fd9a61d05c758a.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2914150/67743fd141f4ba3d68fc9587fe2975853198acac/ss_67743fd141f4ba3d68fc9587fe2975853198acac.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2914150/ec0f5c8899355a2d6bec1699760539e16d1694f4/ss_ec0f5c8899355a2d6bec1699760539e16d1694f4.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2914150/b72b692c16b3788e2b58fdeeb0f8dc0467de7d65/ss_b72b692c16b3788e2b58fdeeb0f8dc0467de7d65.600x338.jpg'
+          ],
+          reviewSummary: '特别好评',
+          reviewCount: '977',
+          discountPercent: 10,
+          originalPrice: '¥2,190'
+        },
+        {
+          title: '王牌战略：机甲新星',
+          description: '牌组构建、机甲、类 Rogue、卡牌游戏',
+          price: '¥1,634',
+          image:
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3127770/7552e200be2f9f2585ed27c00d7850f11caa1f0c/capsule_184x69_schinese.jpg?t=1777103152',
+          releaseDate: '2026 年 4 月 24 日',
+          platforms: ['windows'],
+          topTags: ['牌组构建', '机甲', '类 Rogue', '卡牌游戏'],
+          screenshots: [
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3127770/a8f21833f4a6ff50a5367740f3f343a08b47d841/ss_a8f21833f4a6ff50a5367740f3f343a08b47d841.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3127770/589d0a1a7c47734b7cfec88ed1eb9e12c29ecbd2/ss_589d0a1a7c47734b7cfec88ed1eb9e12c29ecbd2.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3127770/5f1f8e0a10e60746a85fb766533668aa32b0d6bb/ss_5f1f8e0a10e60746a85fb766533668aa32b0d6bb.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3127770/f0bb8e442a96b96aa31404e891a48022659223e0/ss_f0bb8e442a96b96aa31404e891a48022659223e0.600x338.jpg'
+          ],
+          reviewSummary: '好评',
+          reviewCount: '38',
+          discountPercent: 14,
+          originalPrice: '¥1,900'
+        },
+        {
+          title: '异形工厂2',
+          description: '管理、自动化、策略、未来',
+          price: '¥2,240',
+          image:
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2162800/5ec2bda421bfa327f6cf5fec640d302de89bb3f2/capsule_184x69_alt_assets_7_schinese.jpg?t=1776956035',
+          releaseDate: '2026 年 4 月 23 日',
+          platforms: ['windows', 'mac', 'linux'],
+          topTags: ['管理', '自动化', '策略', '未来'],
+          screenshots: [
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2162800/16462abda91738df594156d4b2f0a3869bb03d49/ss_16462abda91738df594156d4b2f0a3869bb03d49.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2162800/0aa87879900b062d7cdda1594d58ecb1cdb4a389/ss_0aa87879900b062d7cdda1594d58ecb1cdb4a389.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2162800/59577f5efa6411e1acc46a045d9d0108e95aae06/ss_59577f5efa6411e1acc46a045d9d0108e95aae06.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2162800/ec7e9bd126c7c18cb01226c1ef9d9adaa0e20a9b/ss_ec7e9bd126c7c18cb01226c1ef9d9adaa0e20a9b.600x338.jpg'
+          ],
+          reviewSummary: '好评如潮',
+          reviewCount: '1,209',
+          discountPercent: 20,
+          originalPrice: '¥2,800'
+        },
+        {
+          title: 'Forefront',
+          description: '第一人称射击、玩家对战、虚拟现实、射击',
+          price: '¥4,400',
+          image:
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2981220/56debeb3451e74dddd84fd9d8a44f34b3bae0e66/capsule_184x69.jpg?t=1776937719',
+          releaseDate: '2026 年 4 月 23 日',
+          platforms: ['windows'],
+          topTags: ['第一人称射击', '玩家对战', '虚拟现实', '射击'],
+          screenshots: [
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2981220/e44e94eec6c549a479935d47d3125f16ade8cba3/ss_e44e94eec6c549a479935d47d3125f16ade8cba3.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2981220/10d8b55c10183767d12fa399655633a95e7852bd/ss_10d8b55c10183767d12fa399655633a95e7852bd.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2981220/c123cc84a8fc8ad615b4aacc23b0dda1f9f2c8ea/ss_c123cc84a8fc8ad615b4aacc23b0dda1f9f2c8ea.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2981220/01caac5b55e5976db10072cb384a13e8bee64e61/ss_01caac5b55e5976db10072cb384a13e8bee64e61.600x338.jpg'
+          ],
+          reviewSummary: '特别好评',
+          reviewCount: '1,471'
+        },
+        {
+          title: '明日潮汐 Tides of Tomorrow 🌊',
+          description: '选择取向、剧情丰富、冒险、第一人称',
+          price: '¥3,511',
+          image:
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2678080/22ae2ba090288aaa7a5944d5679d23d3a134f29b/capsule_184x69_schinese.jpg?t=1776956314',
+          releaseDate: '2026 年 4 月 22 日',
+          platforms: ['windows'],
+          topTags: ['选择取向', '剧情丰富', '冒险', '第一人称'],
+          screenshots: [
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2678080/4fa64bdd01c9acb9def8fb33f127610e8a2e041b/ss_4fa64bdd01c9acb9def8fb33f127610e8a2e041b.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2678080/52aaab12cfcc14aace46ddde6aa3f8fe95529cbb/ss_52aaab12cfcc14aace46ddde6aa3f8fe95529cbb.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2678080/d92d4eb5ae07ebb714370437bf384903d62ee9bf/ss_d92d4eb5ae07ebb714370437bf384903d62ee9bf.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2678080/32828fbf2f65901da1d3437aa60ddb0134aa820c/ss_32828fbf2f65901da1d3437aa60ddb0134aa820c.600x338.jpg'
+          ],
+          reviewSummary: '特别好评',
+          reviewCount: '155',
+          discountPercent: 20,
+          originalPrice: '¥4,389'
+        },
+        {
+          title: '同行：月球逃脱',
+          description: '解谜、在线合作、合作战役、密室逃脱',
+          price: '¥1,080',
+          image:
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3744430/02d9ed13624e8ac3ac4806c7ae8c909a49632580/capsule_184x69_schinese.jpg?t=1776855018',
+          releaseDate: '2026 年 4 月 21 日',
+          platforms: ['windows'],
+          topTags: ['解谜', '在线合作', '合作战役', '密室逃脱'],
+          screenshots: [
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3744430/ab91cc38bd2c70c4ec4dc53508fcf5bb46905c41/ss_ab91cc38bd2c70c4ec4dc53508fcf5bb46905c41.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3744430/823b3e5dff99d20460daadfbc2c868f3f2ca1849/ss_823b3e5dff99d20460daadfbc2c868f3f2ca1849.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3744430/8e034bb1834e863546316fc43027d837f91bbb88/ss_8e034bb1834e863546316fc43027d837f91bbb88.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3744430/0b139182a90ef2aecd1e41a5cf783a9440837f09/ss_0b139182a90ef2aecd1e41a5cf783a9440837f09.600x338.jpg'
+          ],
+          reviewSummary: '特别好评',
+          reviewCount: '110',
+          discountPercent: 10,
+          originalPrice: '¥1,200'
         }
       ]
     },
     {
       id: 'top-sellers',
       label: '热销商品',
-      moreLabel: '热销',
+      moreLabel: '热销商品',
       entries: [
         {
-          title: 'PRAGMATA',
-          description: '科幻动作冒险、第三人称射击、剧情驱动',
-          price: '¥ 268.00',
-          image:
-            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3357650/3e7cf55cf72a980ac94cf45d4212e8f0cb566f7f/capsule_231x87.jpg?t=1776398844',
-          releaseDate: '2026 年 4 月 16 日',
-          platforms: ['windows'],
-          topTags: ['动作', '科幻', '冒险', '第三人称射击'],
-          screenshots: [asset('ow-1.jpg'), asset('ow-2.jpg'), asset('ow-3.jpg'), asset('ow-4.jpg')],
-          reviewSummary: '特别好评',
-          reviewCount: '11,482'
-        },
-        {
           title: 'Counter-Strike 2',
-          description: '竞技、第一人称射击、免费开玩、饰品市场',
-          price: '免费开玩',
-          image: asset('deal-cs2.jpg'),
-          releaseDate: '现已推出',
-          platforms: ['windows'],
-          topTags: ['FPS', '竞技', '免费开玩', '多人'],
-          screenshots: [asset('cs2-1.jpg'), asset('cs2-2.jpg'), asset('cs2-3.jpg'), asset('cs2-4.jpg')],
-          reviewSummary: '特别好评',
-          reviewCount: '8,28,223'
-        },
-        {
-          title: 'Crusader Kings III',
-          description: '大战略、角色扮演、中世纪、模拟',
-          price: '¥ 2,097',
-          image: asset('ck3-hero.jpg'),
-          releaseDate: '现已推出',
-          platforms: ['windows', 'mac', 'linux'],
-          topTags: ['大战略', '中世纪', '角色扮演', '模拟'],
-          screenshots: [asset('ck3-1.jpg'), asset('ck3-2.jpg'), asset('ck3-3.jpg'), asset('ck3-4.jpg')],
-          reviewSummary: '特别好评',
-          reviewCount: '165,421'
-        },
-        {
-          title: '我家有矿',
-          description: '休闲、挂机游戏、资源管理、管理',
-          price: '¥ 18.85',
+          description: '第一人称射击、射击、多人、竞技',
+          price: '免费',
           image:
-            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3946110/1db9fb9a87a83781d5244dfa2078a1cd235af5ef/capsule_231x87_schinese.jpg?t=1776670424',
-          releaseDate: '2026 年 4 月 20 日',
-          platforms: ['windows'],
-          topTags: ['休闲', '挂机游戏', '资源管理', '管理'],
-          screenshots: [asset('cheap-breach.jpg'), asset('cheap-hike.jpg'), asset('cheap-metro.jpg'), asset('cheap-slay.jpg')],
-          reviewSummary: '好评',
-          reviewCount: '103',
-          discountPercent: 35,
-          originalPrice: '¥ 29.00'
-        },
-        {
-          title: 'Hades II',
-          description: '动作 Rogue-like、神话、快节奏战斗',
-          price: '¥ 108',
-          image: asset('deal-hades2.jpg'),
-          releaseDate: '抢先体验',
-          platforms: ['windows'],
-          topTags: ['动作 Rogue-like', '神话', '快节奏', '独立'],
-          screenshots: [asset('deck-hades2.jpg'), asset('ow-2.jpg'), asset('cs2-2.jpg'), asset('ck3-2.jpg')],
-          reviewSummary: '好评如潮',
-          reviewCount: '67,321'
-        },
-        {
-          title: 'Schedule I',
-          description: '合作混乱、犯罪模拟、黑色幽默、热度飙升',
-          price: '¥ 76.00',
-          image: asset('cheap-breach.jpg'),
-          releaseDate: '现已推出',
-          platforms: ['windows'],
-          topTags: ['合作', '犯罪模拟', '黑色幽默', '热门新品'],
-          screenshots: [asset('cheap-breach.jpg'), asset('cheap-hike.jpg'), asset('cheap-metro.jpg'), asset('cheap-slay.jpg')],
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/730/capsule_184x69_schinese.jpg?t=1749053861',
+          releaseDate: '',
+          platforms: ['windows', 'linux'],
+          topTags: ['第一人称射击', '射击', '多人', '竞技'],
+          screenshots: [
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/730/ss_13bb35638c0267759276f511ee97064773b37a51.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/730/ss_d830cfd0550fbb64d80e803e93c929c3abb02056.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/730/ss_0f8cf82d019c614760fd20801f2bb4001da7ea77.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/730/ss_796601d9d67faf53486eeb26d0724347cea67ddc.600x338.jpg'
+          ],
           reviewSummary: '特别好评',
-          reviewCount: '58,932'
+          reviewCount: '1,381,896'
         },
         {
-          title: 'R.E.P.O.',
-          description: '联机恐怖、物理互动、合作逃生、爆款直播',
-          price: '¥ 42.00',
-          image: asset('vr-bonelab.jpg'),
-          releaseDate: '现已推出',
+          title: 'PRAGMATA',
+          description: '可爱、科幻、动作、第三人称射击',
+          price: '¥7,990',
+          image:
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3357650/3e7cf55cf72a980ac94cf45d4212e8f0cb566f7f/capsule_184x69.jpg?t=1777005719',
+          releaseDate: '',
           platforms: ['windows'],
-          topTags: ['联机恐怖', '物理互动', '合作', '主播热玩'],
-          screenshots: [asset('ow-3.jpg'), asset('cs2-3.jpg'), asset('ck3-3.jpg'), asset('cheap-hike.jpg')],
-          reviewSummary: '好评如潮',
-          reviewCount: '41,287'
+          topTags: ['可爱', '科幻', '动作', '第三人称射击'],
+          screenshots: [
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3357650/8913ab7128c72ddd1b407c274e9615b2f6e658a2/ss_8913ab7128c72ddd1b407c274e9615b2f6e658a2.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3357650/9699288b90d0aad320e998f107b59edd27e9ea61/ss_9699288b90d0aad320e998f107b59edd27e9ea61.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3357650/26773713a2435c8edc2eac5e7eb234324b3b002f/ss_26773713a2435c8edc2eac5e7eb234324b3b002f.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3357650/62486c0475c7bf1a14889d61a51ad24f09e5f044/ss_62486c0475c7bf1a14889d61a51ad24f09e5f044.600x338.jpg'
+          ],
+          reviewSummary: '特别好评',
+          reviewCount: '3,195'
+        },
+        {
+          title: 'Windrose: 风启之旅',
+          description: '抢先体验、海盗、在线合作、开放世界生存制作',
+          price: '¥3,400',
+          image:
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3041230/cd75685a04b997e230b141fcc4a6ed5c1770b453/capsule_184x69_schinese.jpg?t=1776704774',
+          releaseDate: '',
+          platforms: ['windows'],
+          topTags: ['抢先体验', '海盗', '在线合作', '开放世界生存制作'],
+          screenshots: [
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3041230/65dfc1db4ae81fd96d496c0e3bb9640281eafe0c/ss_65dfc1db4ae81fd96d496c0e3bb9640281eafe0c.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3041230/9d7ee982069054a1ba23dc881f26f1f83f356daa/ss_9d7ee982069054a1ba23dc881f26f1f83f356daa.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3041230/f83b7aa29874e6e57fd20ab0642269536723ac1a/ss_f83b7aa29874e6e57fd20ab0642269536723ac1a.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3041230/464db0a63a2d03bb8e75ecf04e24f8949b03d500/ss_464db0a63a2d03bb8e75ecf04e24f8949b03d500.600x338.jpg'
+          ],
+          reviewSummary: '褒贬不一',
+          reviewCount: '1,029'
+        },
+        {
+          title: '七大罪：Origin',
+          description: '开放世界、免费开玩、动漫、多人',
+          price: '免费',
+          image:
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3679080/f7ce109f339c8ad6c1f8839313c64806a9edc203/capsule_184x69.jpg?t=1777011324',
+          releaseDate: '',
+          platforms: ['windows'],
+          topTags: ['开放世界', '免费开玩', '动漫', '多人'],
+          screenshots: [
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3679080/33059da9c5bc2e3a9b4335700d7453970cba7700/ss_33059da9c5bc2e3a9b4335700d7453970cba7700.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3679080/53373b98ce2cec50ffdf76f7cd072aa8f6eda7d2/ss_53373b98ce2cec50ffdf76f7cd072aa8f6eda7d2.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3679080/ec066430e514ec4ac7a6c7c92e4c7dc932be6cdb/ss_ec066430e514ec4ac7a6c7c92e4c7dc932be6cdb.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3679080/58fc82c529edeaa16fbdf16b6bdd329cae8b80d7/ss_58fc82c529edeaa16fbdf16b6bdd329cae8b80d7.600x338.jpg'
+          ],
+          reviewSummary: '多半差评',
+          reviewCount: '589'
+        },
+        {
+          title: 'Apex Legends™',
+          description: '免费开玩、大逃杀、多人、第一人称射击',
+          price: '免费',
+          image:
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1172470/b2163cc2e8d366e26d8d463d178d86690d9a402e/capsule_184x69.jpg?t=1770753360',
+          releaseDate: '',
+          platforms: ['windows'],
+          topTags: ['免费开玩', '大逃杀', '多人', '第一人称射击'],
+          screenshots: [
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1172470/d86d5fe798addd4ff7219938f891268affb1ea2d/ss_d86d5fe798addd4ff7219938f891268affb1ea2d.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1172470/c1f5eb613c365fc96f5d59dd69bd852793929f69/ss_c1f5eb613c365fc96f5d59dd69bd852793929f69.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1172470/f786d0d1e567be0e5a801a62855970f9b6bae6fd/ss_f786d0d1e567be0e5a801a62855970f9b6bae6fd.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1172470/3424111e83c2adfc7e6c056573d5089c27fdc711/ss_3424111e83c2adfc7e6c056573d5089c27fdc711.600x338.jpg'
+          ],
+          reviewSummary: '褒贬不一',
+          reviewCount: '261,723'
+        },
+        {
+          title: 'Slay the Spire 2',
+          description: '类 Rogue、策略、卡牌游戏、牌组构建',
+          price: '¥2,800',
+          image:
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2868840/fb0ad136e9eaa4297a1ab3440d88ecb7209f44a2/capsule_184x69.jpg?t=1776735385',
+          releaseDate: '',
+          platforms: ['windows', 'mac', 'linux'],
+          topTags: ['类 Rogue', '策略', '卡牌游戏', '牌组构建'],
+          screenshots: [
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2868840/c3db69efd984ef012ae85c5b426663720152f0a4/ss_c3db69efd984ef012ae85c5b426663720152f0a4.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2868840/0fdb2940c0d367a40b2be6433daf12e3634089cf/ss_0fdb2940c0d367a40b2be6433daf12e3634089cf.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2868840/f3af7cb9693b9c4b6a7555227db3fef943db3992/ss_f3af7cb9693b9c4b6a7555227db3fef943db3992.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2868840/1a373a95229aab0cfd97f553ecbe86092364bb9c/ss_1a373a95229aab0cfd97f553ecbe86092364bb9c.600x338.jpg'
+          ],
+          reviewSummary: '多半差评',
+          reviewCount: '71,722'
+        },
+        {
+          title: 'Street Fighter 6',
+          description: '2D 格斗、格斗、街机、角色自定义',
+          price: '¥2,495',
+          image:
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1364780/7f4bcdebc8dc0d9c1e77d70fe2c6ed13a3ab2381/capsule_184x69_alt_assets_18.jpg?t=1776917924',
+          releaseDate: '',
+          platforms: ['windows'],
+          topTags: ['2D 格斗', '格斗', '街机', '角色自定义'],
+          screenshots: [
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1364780/ss_f62ce93269a6d8e0027853358af4d6368e2c4b93.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1364780/ss_d186566a92ada8cdb08b04769a8c95cd1e380006.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1364780/ss_387137f8cccb048c35a8685634372e97785d40aa.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1364780/ss_a381f1b3b450c18900d47b991ce8e7456e9cdba5.600x338.jpg'
+          ],
+          reviewSummary: '特别好评',
+          reviewCount: '11,421',
+          discountPercent: 50,
+          originalPrice: '¥4,990'
+        },
+        {
+          title: '晕晕电波症候群',
+          description: '节奏、心理恐怖、冒险、动漫',
+          price: '¥1,971',
+          image:
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2914150/49fc1d453e7ac6debbde3d276b158b820e5569a4/capsule_184x69_schinese.jpg?t=1777123556',
+          releaseDate: '',
+          platforms: ['windows'],
+          topTags: ['节奏', '心理恐怖', '冒险', '动漫'],
+          screenshots: [
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2914150/9111298a8e027b996f0d245a53fd9a61d05c758a/ss_9111298a8e027b996f0d245a53fd9a61d05c758a.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2914150/ec0f5c8899355a2d6bec1699760539e16d1694f4/ss_ec0f5c8899355a2d6bec1699760539e16d1694f4.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2914150/b72b692c16b3788e2b58fdeeb0f8dc0467de7d65/ss_b72b692c16b3788e2b58fdeeb0f8dc0467de7d65.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2914150/67743fd141f4ba3d68fc9587fe2975853198acac/ss_67743fd141f4ba3d68fc9587fe2975853198acac.600x338.jpg'
+          ],
+          reviewSummary: '特别好评',
+          reviewCount: '977',
+          discountPercent: 10,
+          originalPrice: '¥2,190'
+        },
+        {
+          title: '《守望先锋®》',
+          description: '免费开玩、英雄射击、第一人称射击、多人',
+          price: '免费',
+          image:
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2357570/f40730cf4defbd8f90d0f0662d7b263dd2915fe1/capsule_184x69_alt_assets_20.jpg?t=1776189843',
+          releaseDate: '',
+          platforms: ['windows'],
+          topTags: ['免费开玩', '英雄射击', '第一人称射击', '多人'],
+          screenshots: [
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2357570/b17b61def60cb8b3f693cb3a6b80152f7963b04e/ss_b17b61def60cb8b3f693cb3a6b80152f7963b04e.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2357570/ec6de0364a1014e97ab05a7cad9f187be0bd494e/ss_ec6de0364a1014e97ab05a7cad9f187be0bd494e.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2357570/2830b5babd473e7e76fa522d4c1858386d3acfb1/ss_2830b5babd473e7e76fa522d4c1858386d3acfb1.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2357570/78e99c6da684734a84fcd69aff1baa7b5fe996f6/ss_78e99c6da684734a84fcd69aff1baa7b5fe996f6.600x338.jpg'
+          ],
+          reviewSummary: '差评如潮',
+          reviewCount: '145,201'
+        },
+        {
+          title: 'Team Fortress 2',
+          description: '免费开玩、英雄射击、多人、第一人称射击',
+          price: '免费',
+          image:
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/440/capsule_184x69.jpg?t=1757348372',
+          releaseDate: '',
+          platforms: ['windows', 'linux'],
+          topTags: ['免费开玩', '英雄射击', '多人', '第一人称射击'],
+          screenshots: [
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/440/ss_ea21f7bbf4f79bada4554df5108d04b6889d3453.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/440/ss_ee24a769dc1d81dcbd7b250d16530394adee4264.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/440/ss_e3aedb2ab36bba8cfe611b1e0eaa807e4bb2d742.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/440/ss_9faaa506d91bf19dbb398e0c06a684b337f85f91.600x338.jpg'
+          ],
+          reviewSummary: '特别好评',
+          reviewCount: '19,244'
         }
       ]
     },
@@ -1025,81 +1186,184 @@ export const rankingTabsByLocale: Record<Locale, RankingTab[]> = {
       moreLabel: '即将推出',
       entries: [
         {
-          title: 'SILENT HILL f',
-          description: '心理恐怖、生存、日式悬疑、探索',
-          price: '即将推出',
-          image: asset('cheap-hike.jpg'),
-          releaseDate: '即将宣布',
+          title: '失控车手',
+          description: '竞速、战斗竞速、驾驶、街机',
+          price: '',
+          image:
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3756020/1bc53644e249cb08868e719cf3062ddd73fbe431/capsule_184x69.jpg?t=1776145140',
+          releaseDate: '',
           platforms: ['windows'],
-          topTags: ['心理恐怖', '生存', '悬疑', '探索'],
-          screenshots: [asset('ow-1.jpg'), asset('ow-2.jpg'), asset('ow-3.jpg'), asset('ow-4.jpg')],
-          reviewSummary: '即将推出'
+          topTags: ['竞速', '战斗竞速', '驾驶', '街机'],
+          screenshots: [
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3756020/510d73fb2aebe11822b42e0291779c05cb7caa0a/ss_510d73fb2aebe11822b42e0291779c05cb7caa0a.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3756020/dbe8f27ac71b4148e8f9e7289deae6537327e341/ss_dbe8f27ac71b4148e8f9e7289deae6537327e341.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3756020/bfa8038bc352eedbbd0cd72306ced9173a48f6ef/ss_bfa8038bc352eedbbd0cd72306ced9173a48f6ef.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3756020/eb739abf89e59e1424d7951a98b1e982cd350b7d/ss_eb739abf89e59e1424d7951a98b1e982cd350b7d.600x338.jpg'
+          ],
+          reviewSummary: '无用户评测',
+          reviewCount: '无用户评测'
         },
         {
-          title: 'ARC Raiders',
-          description: '合作射击、科幻、撤离、生存',
-          price: '即将推出',
-          image: asset('deal-cs2.jpg'),
-          releaseDate: '2026',
-          platforms: ['windows'],
-          topTags: ['合作射击', '科幻', '撤离', '生存'],
-          screenshots: [asset('cs2-1.jpg'), asset('cs2-2.jpg'), asset('cs2-3.jpg'), asset('cs2-4.jpg')],
-          reviewSummary: '即将推出'
+          title: 'Global Rescue',
+          description: '模拟、策略、沙盒、管理',
+          price: '',
+          image:
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2873660/13720cae0c86f02d41b86c4f4240ffad06ee43c7/capsule_184x69_schinese.jpg?t=1777116781',
+          releaseDate: '',
+          platforms: ['windows', 'mac'],
+          topTags: ['模拟', '策略', '沙盒', '管理'],
+          screenshots: [
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2873660/3efc6fc61cb08c94193f5dba862ad6b178befc63/ss_3efc6fc61cb08c94193f5dba862ad6b178befc63.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2873660/9552474506348b9496c2cbfe5000bd222ac03501/ss_9552474506348b9496c2cbfe5000bd222ac03501.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2873660/877606d27318a2193e1fb9baa05985b6087f6ea1/ss_877606d27318a2193e1fb9baa05985b6087f6ea1.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2873660/a53dbb6d7f946ab1c84b38dfb7ea038e67f1ff4d/ss_a53dbb6d7f946ab1c84b38dfb7ea038e67f1ff4d.600x338.jpg'
+          ],
+          reviewSummary: '无用户评测',
+          reviewCount: '无用户评测'
         },
         {
-          title: 'Subnautica 2',
-          description: '海洋生存、开放世界、合作、探索',
-          price: '即将推出',
-          image: asset('deal-origin.jpg'),
-          releaseDate: '2026',
-          platforms: ['windows'],
-          topTags: ['海洋生存', '开放世界', '合作', '探索'],
-          screenshots: [asset('ck3-1.jpg'), asset('ck3-2.jpg'), asset('ck3-3.jpg'), asset('ck3-4.jpg')],
-          reviewSummary: '即将推出'
+          title: '这是谐音梗',
+          description: '休闲、文字游戏、欢乐、解谜',
+          price: '',
+          image:
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4164310/fc3a9a75aa2b120dfbef19a70d5ea53e6c13343c/capsule_184x69.jpg?t=1777044835',
+          releaseDate: '',
+          platforms: ['windows', 'mac'],
+          topTags: ['休闲', '文字游戏', '欢乐', '解谜'],
+          screenshots: [
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4164310/f1775124ee0904217196b4e4ac9d4cba9d14ffaf/ss_f1775124ee0904217196b4e4ac9d4cba9d14ffaf.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4164310/f2e17615d2dd53e227492d895311366713a65fff/ss_f2e17615d2dd53e227492d895311366713a65fff.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4164310/1841dc166abb6e4c436c5e3e7a01881fbfaef414/ss_1841dc166abb6e4c436c5e3e7a01881fbfaef414.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4164310/2dccf7b409ddc6e3ca61eb6e5aaee40fa2654c0c/ss_2dccf7b409ddc6e3ca61eb6e5aaee40fa2654c0c.600x338.jpg'
+          ],
+          reviewSummary: '无用户评测',
+          reviewCount: '无用户评测'
         },
         {
-          title: 'The Seven Deadly Sins: Origin',
-          description: '开放世界、动作冒险、动漫、角色扮演',
-          price: '即将推出',
-          image: asset('deal-origin.jpg'),
-          releaseDate: '即将推出',
+          title: '无名者',
+          description: '女性主角、视觉小说、反乌托邦、手绘',
+          price: '',
+          image:
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1960880/5ae7fcce2af10a6005aaa79a21696be4ea0db021/capsule_184x69_schinese.jpg?t=1776692996',
+          releaseDate: '',
           platforms: ['windows'],
-          topTags: ['开放世界', '动作冒险', '动漫', '角色扮演'],
-          screenshots: [asset('ow-1.jpg'), asset('ck3-1.jpg'), asset('cs2-1.jpg'), asset('ow-3.jpg')],
-          reviewSummary: '即将推出'
+          topTags: ['女性主角', '视觉小说', '反乌托邦', '手绘'],
+          screenshots: [
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1960880/ss_f006d5504dc7d91b77f025d8604770b53b884bbb.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1960880/ss_24fa880deb694a4e4eb119bcf2e5f774b52bd6d3.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1960880/ss_082df62fea2d7867ea132fef53086c8d526023d6.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1960880/ss_189f595d0edd8e1c65d00250e0200d5eac6e0e30.600x338.jpg'
+          ],
+          reviewSummary: '无用户评测',
+          reviewCount: '无用户评测'
         },
         {
-          title: 'Judas',
-          description: '剧情驱动、科幻射击、沉浸模拟、单人冒险',
-          price: '即将推出',
-          image: asset('deal-hades2.jpg'),
-          releaseDate: '即将推出',
-          platforms: ['windows'],
-          topTags: ['剧情驱动', '科幻射击', '沉浸模拟', '单人冒险'],
-          screenshots: [asset('cs2-2.jpg'), asset('ow-2.jpg'), asset('ck3-2.jpg'), asset('ow-4.jpg')],
-          reviewSummary: '即将推出'
+          title: '菜园无双',
+          description: '点击游戏、挂机游戏、轻度 Rogue、策略',
+          price: '',
+          image:
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4045540/6f333b262e90299c5e8ab3506875f5da30013fc2/capsule_184x69_schinese.jpg?t=1777011280',
+          releaseDate: '',
+          platforms: ['windows', 'mac', 'linux'],
+          topTags: ['点击游戏', '挂机游戏', '轻度 Rogue', '策略'],
+          screenshots: [
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4045540/e50627e64b8362da28844a37f298c09b97c47158/ss_e50627e64b8362da28844a37f298c09b97c47158.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4045540/2ca57c01b8f1f0cd890e27e7139d23f2eed8cc72/ss_2ca57c01b8f1f0cd890e27e7139d23f2eed8cc72.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4045540/e696dcaa7b2ac0be71ae8fba97f83ca0db8e5467/ss_e696dcaa7b2ac0be71ae8fba97f83ca0db8e5467.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4045540/27bce00494c5791146d08c413dadf7e9e6e22679/ss_27bce00494c5791146d08c413dadf7e9e6e22679.600x338.jpg'
+          ],
+          reviewSummary: '无用户评测',
+          reviewCount: '无用户评测'
         },
         {
-          title: 'Fable',
-          description: '奇幻开放世界、角色扮演、幽默叙事、重启新作',
-          price: '即将推出',
-          image: asset('deck-vampire.jpg'),
-          releaseDate: '2026',
+          title: 'Toll Booth Simulator | 收费站模拟器',
+          description: '工作模拟、模拟、动作、生活模拟',
+          price: '',
+          image:
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3896300/aa78a2426bd4383309c3457166e3861df7d42b97/capsule_184x69.jpg?t=1777109940',
+          releaseDate: '',
           platforms: ['windows'],
-          topTags: ['奇幻', '角色扮演', '开放世界', '冒险'],
-          screenshots: [asset('cheap-hike.jpg'), asset('ow-1.jpg'), asset('cheap-breach.jpg'), asset('cheap-slay.jpg')],
-          reviewSummary: '即将推出'
+          topTags: ['工作模拟', '模拟', '动作', '生活模拟'],
+          screenshots: [
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3896300/a440e113a5093b4ef98cca54eed748958dea3f88/ss_a440e113a5093b4ef98cca54eed748958dea3f88.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3896300/907adea0778651e1821945010740e03f9bb90476/ss_907adea0778651e1821945010740e03f9bb90476.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3896300/19b75eecd3c656b0d2b92bb7c844e5a54dd648c4/ss_19b75eecd3c656b0d2b92bb7c844e5a54dd648c4.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3896300/17a3c9f49d3227be505be046018a98d74d272dfa/ss_17a3c9f49d3227be505be046018a98d74d272dfa.600x338.jpg'
+          ],
+          reviewSummary: '无用户评测',
+          reviewCount: '无用户评测'
         },
         {
-          title: 'WUCHANG: Fallen Feathers',
-          description: '魂系动作、明末背景、硬核战斗、国风奇谭',
-          price: '即将推出',
-          image: asset('deal-origin.jpg'),
-          releaseDate: '2026',
+          title: '团本自走棋',
+          description: '自走棋、轻度 Rogue、动作角色扮演、团队角色扮演',
+          price: '',
+          image:
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4283360/22aecedf9e4263378fa19a3d442fdeefa8d6b63b/capsule_184x69_schinese.jpg?t=1777032043',
+          releaseDate: '',
+          platforms: ['windows', 'linux'],
+          topTags: ['自走棋', '轻度 Rogue', '动作角色扮演', '团队角色扮演'],
+          screenshots: [
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4283360/69e90d82ec6eac15466322b4aea2a59e8af98b71/ss_69e90d82ec6eac15466322b4aea2a59e8af98b71.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4283360/b70048d826364267782b7843ab1c9d8f4aaedb88/ss_b70048d826364267782b7843ab1c9d8f4aaedb88.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4283360/63f0820cb47a413997adff27363c4222c96e8aca/ss_63f0820cb47a413997adff27363c4222c96e8aca.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4283360/359901706e637f08467ea58b1ddffe8f5ccc7a4b/ss_359901706e637f08467ea58b1ddffe8f5ccc7a4b.600x338.jpg'
+          ],
+          reviewSummary: '无用户评测',
+          reviewCount: '无用户评测'
+        },
+        {
+          title: '狂野都市 Wild City',
+          description: '牌组构建式类 Rogue、策略、轻度 Rogue、牌组构建',
+          price: '',
+          image:
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2436970/3438dc18b0c217072b185d5c4573920c34b97aa1/capsule_184x69.jpg?t=1776954273',
+          releaseDate: '',
+          platforms: ['windows', 'mac'],
+          topTags: ['牌组构建式类 Rogue', '策略', '轻度 Rogue', '牌组构建'],
+          screenshots: [
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2436970/fc911fb44e5d99e3d9fbf0c3f45f345001399404/ss_fc911fb44e5d99e3d9fbf0c3f45f345001399404.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2436970/7d92ee7d0912c1a6cd348f2f1117bec22cbb5d6f/ss_7d92ee7d0912c1a6cd348f2f1117bec22cbb5d6f.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2436970/c31992ec6adb9287a11622eb2051c656024719c0/ss_c31992ec6adb9287a11622eb2051c656024719c0.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2436970/99ee4c94bf02a42610eb8c0d18d20afdafb4facb/ss_99ee4c94bf02a42610eb8c0d18d20afdafb4facb.600x338.jpg'
+          ],
+          reviewSummary: '无用户评测',
+          reviewCount: '无用户评测'
+        },
+        {
+          title: 'CD-ROM',
+          description: '解谜、悬疑、复古、90 年代',
+          price: '',
+          image:
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3968100/9497a51e00e61ef210a292c7fe61b9e922cb8cc2/capsule_184x69.jpg?t=1776251430',
+          releaseDate: '',
           platforms: ['windows'],
-          topTags: ['魂系动作', '国风', '黑暗奇幻', '动作角色扮演'],
-          screenshots: [asset('ck3-1.jpg'), asset('ow-2.jpg'), asset('cs2-2.jpg'), asset('ow-3.jpg')],
-          reviewSummary: '即将推出'
+          topTags: ['解谜', '悬疑', '复古', '90 年代'],
+          screenshots: [
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3968100/7c8c6b836ae769c514726075a9a246b0aa65fcf3/ss_7c8c6b836ae769c514726075a9a246b0aa65fcf3.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3968100/0745975529c4502dc325e7a06e38d01c533f69d7/ss_0745975529c4502dc325e7a06e38d01c533f69d7.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3968100/c08bd233d121ab89dedb74508166d83cf777a906/ss_c08bd233d121ab89dedb74508166d83cf777a906.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3968100/761216f8bec0cba9526dcd3b14002ad88c9bc0a5/ss_761216f8bec0cba9526dcd3b14002ad88c9bc0a5.600x338.jpg'
+          ],
+          reviewSummary: '无用户评测',
+          reviewCount: '无用户评测'
+        },
+        {
+          title: '姆明：暖心冬日',
+          description: '冒险、阖家、温馨惬意、休闲',
+          price: '',
+          image:
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3256150/908e4ab74a25b78963c780011a84652ffba06e96/capsule_184x69_schinese.jpg?t=1774798147',
+          releaseDate: '',
+          platforms: ['windows', 'mac'],
+          topTags: ['冒险', '阖家', '温馨惬意', '休闲'],
+          screenshots: [
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3256150/f17685012ab6062858ed94e2f5338e08256d7e61/ss_f17685012ab6062858ed94e2f5338e08256d7e61.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3256150/9a38008832971572e52f5082bb27d2ca98216cd8/ss_9a38008832971572e52f5082bb27d2ca98216cd8.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3256150/0fe2ca9da370060bd7e3fe553bbf7dc544fff7a2/ss_0fe2ca9da370060bd7e3fe553bbf7dc544fff7a2.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3256150/21265497594e8e2ec1435ab38fed1d59812e3fcf/ss_21265497594e8e2ec1435ab38fed1d59812e3fcf.600x338.jpg'
+          ],
+          reviewSummary: '无用户评测',
+          reviewCount: '无用户评测'
         }
       ]
     },
@@ -1109,102 +1373,204 @@ export const rankingTabsByLocale: Record<Locale, RankingTab[]> = {
       moreLabel: '优惠',
       entries: [
         {
-          title: 'Cyberpunk 2077',
-          description: '开放世界、剧情丰富、角色扮演、科幻',
-          price: '¥ 132.00',
-          image: asset('deal-origin.jpg'),
-          releaseDate: '特惠进行中',
+          title: '女神异闻录5皇家版',
+          description: '日系角色扮演、剧情丰富、回合制战斗、动漫',
+          price: '¥1,535',
+          image:
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1687950/9ac9b8764a208f40d271a9e7317f9ab2bf49acf2/capsule_184x69_schinese.jpg?t=1763530018',
+          releaseDate: '',
           platforms: ['windows'],
-          topTags: ['开放世界', '剧情丰富', '角色扮演', '科幻'],
-          screenshots: [asset('ow-1.jpg'), asset('ow-2.jpg'), asset('ow-3.jpg'), asset('ow-4.jpg')],
-          reviewSummary: '特别好评',
-          reviewCount: '864,894',
-          discountPercent: 55,
-          originalPrice: '¥ 268.00'
+          topTags: ['日系角色扮演', '剧情丰富', '回合制战斗', '动漫'],
+          screenshots: [
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1687950/ss_ddcc016b8e5c434ccbd1a89c0157ce73acf905ae.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1687950/ss_a3258aba84ae2f2ff13a02a160f7495bfc152adb.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1687950/ss_663171dc3afce8fe987e57e8659f91b69faa39bc.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1687950/ss_63d2164bf39a43905e9602381f43a9ad4ab46dea.600x338.jpg'
+          ],
+          reviewSummary: '好评如潮',
+          reviewCount: '32,430',
+          discountPercent: 80,
+          originalPrice: '¥7,678'
         },
         {
-          title: 'DREDGE',
-          description: '海钓悬疑、独立、恐怖、探索',
-          price: '¥ 74.00',
-          image: asset('cheap-hike.jpg'),
-          releaseDate: '特惠进行中',
+          title: '赛博朋克 2077',
+          description: '赛博朋克、开放世界、裸露、角色扮演',
+          price: '¥3,072',
+          image:
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1091500/47c51dbc7cbec037001f1a23e1289d475be8fd5e/capsule_184x69_schinese.jpg?t=1769690377',
+          releaseDate: '',
           platforms: ['windows', 'mac'],
-          topTags: ['海钓悬疑', '独立', '恐怖', '探索'],
-          screenshots: [asset('cheap-breach.jpg'), asset('cheap-hike.jpg'), asset('cheap-metro.jpg'), asset('cheap-slay.jpg')],
-          reviewSummary: '特别好评',
-          reviewCount: '31,210',
-          discountPercent: 40,
-          originalPrice: '¥ 123.00'
+          topTags: ['赛博朋克', '开放世界', '裸露', '角色扮演'],
+          screenshots: [
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1091500/ss_af2804aa4bf35d4251043744412ce3b359a125ef.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1091500/ss_b529b0abc43f55fc23fe8058eddb6e37c9629a6a.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1091500/ss_0e64170751e1ae20ff8fdb7001a8892fd48260e7.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1091500/ss_2f649b68d579bf87011487d29bc4ccbfdd97d34f.600x338.jpg'
+          ],
+          reviewSummary: '多半好评',
+          reviewCount: '*',
+          discountPercent: 65,
+          originalPrice: '¥8,778'
         },
         {
-          title: 'Dave the Diver',
-          description: '经营、冒险、像素、海底探索',
-          price: '¥ 54.60',
-          image: asset('deck-vampire.jpg'),
-          releaseDate: '特惠进行中',
+          title: '光与影：33号远征队',
+          description: '回合制战斗、剧情丰富、奇幻、好评原声音轨',
+          price: '¥5,984',
+          image:
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1903340/b165109579fe05a63afd279cc4421edfc28d25bd/capsule_184x69_schinese.jpg?t=1773676780',
+          releaseDate: '',
           platforms: ['windows'],
-          topTags: ['经营', '冒险', '像素', '海底探索'],
-          screenshots: [asset('ow-2.jpg'), asset('cs2-2.jpg'), asset('ck3-2.jpg'), asset('cheap-hike.jpg')],
-          reviewSummary: '好评如潮',
-          reviewCount: '98,650',
-          discountPercent: 30,
-          originalPrice: '¥ 78.00'
-        },
-        {
-          title: 'Baba Is You',
-          description: '解谜、逻辑、独立、创意规则',
-          price: '¥ 10.64',
-          image: asset('cheap-slay.jpg'),
-          releaseDate: '特惠进行中',
-          platforms: ['windows', 'mac', 'linux'],
-          topTags: ['解谜', '逻辑', '独立', '创意规则'],
-          screenshots: [asset('cheap-slay.jpg'), asset('cheap-metro.jpg'), asset('cheap-hike.jpg'), asset('cheap-breach.jpg')],
+          topTags: ['回合制战斗', '剧情丰富', '奇幻', '好评原声音轨'],
+          screenshots: [
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1903340/ss_9e050e6a61a4d9f4fe54bc62c8c73da38e9a63b0.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1903340/ss_b8089016095e6a16e324a59c45b2f24a439bd0b3.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1903340/ss_e49800e906e8a0f00707458c836567c933603bac.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1903340/ss_483a27df5072beb3a4650634a764bda750fbcb82.600x338.jpg'
+          ],
           reviewSummary: '特别好评',
-          reviewCount: '18,225',
-          discountPercent: 30,
-          originalPrice: '¥ 15.20'
+          reviewCount: '22,366',
+          discountPercent: 20,
+          originalPrice: '¥7,480'
         },
         {
-          title: 'Balatro',
-          description: '牌组构筑、Rogue-like、策略、独立',
-          price: '¥ 54.40',
-          image: asset('deck-balatro.jpg'),
-          releaseDate: '特惠进行中',
-          platforms: ['windows', 'mac'],
-          topTags: ['牌组构筑', 'Rogue-like', '策略', '独立'],
-          screenshots: [asset('cheap-breach.jpg'), asset('cheap-slay.jpg'), asset('cheap-hike.jpg'), asset('cheap-metro.jpg')],
-          reviewSummary: '好评如潮',
-          reviewCount: '83,412',
-          discountPercent: 20,
-          originalPrice: '¥ 68.00'
+          title: 'Street Fighter 6',
+          description: '2D 格斗、格斗、街机、角色自定义',
+          price: '¥2,495',
+          image:
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1364780/7f4bcdebc8dc0d9c1e77d70fe2c6ed13a3ab2381/capsule_184x69_alt_assets_18.jpg?t=1776917924',
+          releaseDate: '',
+          platforms: ['windows'],
+          topTags: ['2D 格斗', '格斗', '街机', '角色自定义'],
+          screenshots: [
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1364780/ss_d186566a92ada8cdb08b04769a8c95cd1e380006.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1364780/ss_387137f8cccb048c35a8685634372e97785d40aa.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1364780/ss_f62ce93269a6d8e0027853358af4d6368e2c4b93.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1364780/ss_a381f1b3b450c18900d47b991ce8e7456e9cdba5.600x338.jpg'
+          ],
+          reviewSummary: '特别好评',
+          reviewCount: '11,421',
+          discountPercent: 50,
+          originalPrice: '¥4,990'
         },
         {
-          title: 'Vampire Survivors',
-          description: '弹幕割草、Rogue-lite、像素、极致性价比',
-          price: '¥ 17.60',
-          image: asset('deck-vampire.jpg'),
-          releaseDate: '特惠进行中',
-          platforms: ['windows', 'mac'],
-          topTags: ['Rogue-lite', '像素', '弹幕割草', '独立'],
-          screenshots: [asset('cheap-slay.jpg'), asset('cheap-breach.jpg'), asset('cheap-hike.jpg'), asset('cheap-metro.jpg')],
-          reviewSummary: '好评如潮',
-          reviewCount: '2,34,511',
-          discountPercent: 20,
-          originalPrice: '¥ 22.00'
+          title: 'Grand Theft Auto V 增强版',
+          description: '开放世界、动作、色情内容、多人',
+          price: '¥2,851',
+          image:
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3240220/a318bd9affe8eee32984b18794b273c256e9b2d6/capsule_184x69.jpg?t=1765479644',
+          releaseDate: '',
+          platforms: ['windows'],
+          topTags: ['开放世界', '动作', '色情内容', '多人'],
+          screenshots: [
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3240220/60690d0fdbd022ab1527ba6d080d42c1812a0f39/ss_60690d0fdbd022ab1527ba6d080d42c1812a0f39.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3240220/808b550269f898e227dae2c64b5e026f90da85f9/ss_808b550269f898e227dae2c64b5e026f90da85f9.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3240220/6959cc5d64cce82cb68a27457cfa46fb4d50f897/ss_6959cc5d64cce82cb68a27457cfa46fb4d50f897.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3240220/d61184a98c1cf2db2b08b2999c04b0519e3615bb/ss_d61184a98c1cf2db2b08b2999c04b0519e3615bb.600x338.jpg'
+          ],
+          reviewSummary: '多半好评',
+          reviewCount: '43,167',
+          discountPercent: 56,
+          originalPrice: '¥6,480'
         },
         {
-          title: 'Hollow Knight',
-          description: '类银河战士恶魔城、探索、动作、口碑神作',
-          price: '¥ 29.60',
-          image: asset('deal-hades2.jpg'),
-          releaseDate: '特惠进行中',
-          platforms: ['windows', 'mac', 'linux'],
-          topTags: ['类银河战士恶魔城', '探索', '动作', '困难'],
-          screenshots: [asset('ow-1.jpg'), asset('ow-3.jpg'), asset('ck3-2.jpg'), asset('cheap-hike.jpg')],
-          reviewSummary: '好评如潮',
-          reviewCount: '3,29,004',
+          title: 'DARK SOULS™: REMASTERED',
+          description: '类魂系列、黑暗奇幻、角色扮演、困难',
+          price: '¥2,365',
+          image:
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570940/capsule_184x69.jpg?t=1764975651',
+          releaseDate: '',
+          platforms: ['windows'],
+          topTags: ['类魂系列', '黑暗奇幻', '角色扮演', '困难'],
+          screenshots: [
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570940/ss_92b2ba470cbfdb8839b649b3f478e5531dd81a17.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570940/ss_626cc310dc9ac7fb146011582c864a35e5f3e381.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570940/ss_f60f54e58b13d0744853672ccd35810397e3fa26.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570940/ss_3a71463e4ccaf28c5c27f6cf8d32a3a125f45404.600x338.jpg'
+          ],
+          reviewSummary: '特别好评',
+          reviewCount: '9,059',
+          discountPercent: 50,
+          originalPrice: '¥4,730'
+        },
+        {
+          title: '女神异闻录３ Reload',
+          description: '日系角色扮演、角色扮演、动漫、团队角色扮演',
+          price: '¥3,071',
+          image:
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2161700/capsule_184x69.jpg?t=1764776430',
+          releaseDate: '',
+          platforms: ['windows'],
+          topTags: ['日系角色扮演', '角色扮演', '动漫', '团队角色扮演'],
+          screenshots: [
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2161700/ss_7017244fb8319ba927a0ef414959b95a6164356f.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2161700/ss_6488b6bb530620d125dc90c0b11a69028cd97e00.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2161700/ss_d2719b4a5240d4cdd58883e0cd42f0c4d885c178.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2161700/ss_b60f1f21f4794f0ba90bbc55c41aab4637b4103a.600x338.jpg'
+          ],
+          reviewSummary: '特别好评',
+          reviewCount: '6,925',
+          discountPercent: 60,
+          originalPrice: '¥7,678'
+        },
+        {
+          title: '仁王３',
+          description: '动作、动作角色扮演、角色扮演、类魂系列',
+          price: '¥7,744',
+          image:
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3681010/19b0758706fefb5c06a6183365fd62dafe2bf914/capsule_184x69.jpg?t=1772090941',
+          releaseDate: '',
+          platforms: ['windows'],
+          topTags: ['动作', '动作角色扮演', '角色扮演', '类魂系列'],
+          screenshots: [
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3681010/5d02a1bcff9cc74ef4551c9afce91c78881539a1/ss_5d02a1bcff9cc74ef4551c9afce91c78881539a1.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3681010/8c9333bf3f28194cb8113af455ecaf1aa45a0050/ss_8c9333bf3f28194cb8113af455ecaf1aa45a0050.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3681010/c65877619b70c51d6be030c20b5c37bcfaf2e248/ss_c65877619b70c51d6be030c20b5c37bcfaf2e248.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3681010/fe1a9485c46e95c8a899e8cfc645136f303b4fda/ss_fe1a9485c46e95c8a899e8cfc645136f303b4fda.600x338.jpg'
+          ],
+          reviewSummary: '多半好评',
+          reviewCount: '3,669',
           discountPercent: 20,
-          originalPrice: '¥ 37.00'
+          originalPrice: '¥9,680'
+        },
+        {
+          title: '雾锁王国 (Enshrouded)',
+          description: '开放世界、生存、基地建设、多人',
+          price: '¥2,720',
+          image:
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1203620/84d7ce762d0e0ad6a2dfdced85ea713d33b70e18/capsule_184x69_alt_assets_0.jpg?t=1776758849',
+          releaseDate: '',
+          platforms: ['windows'],
+          topTags: ['开放世界', '生存', '基地建设', '多人'],
+          screenshots: [
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1203620/09a1e99c47ba7ffb2413c4708a9f5fbef1397652/ss_09a1e99c47ba7ffb2413c4708a9f5fbef1397652.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1203620/9c2db32975d266f1051f77e46d347a118c824c57/ss_9c2db32975d266f1051f77e46d347a118c824c57.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1203620/50ce17d5a264d10c9e4f65a3cbf3fba9d07bf8d6/ss_50ce17d5a264d10c9e4f65a3cbf3fba9d07bf8d6.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1203620/4cc606e46868db2159ced08f6fe585a03d7e360f/ss_4cc606e46868db2159ced08f6fe585a03d7e360f.600x338.jpg'
+          ],
+          reviewSummary: '褒贬不一',
+          reviewCount: '6,543',
+          discountPercent: 20,
+          originalPrice: '¥3,400'
+        },
+        {
+          title: 'EA SPORTS FC™ 26',
+          description: '足球、多人、体育、模拟',
+          price: '¥2,940',
+          image:
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3405690/abca0fd9695521a046d407327d82f808162315f7/capsule_184x69.jpg?t=1775577454',
+          releaseDate: '',
+          platforms: ['windows'],
+          topTags: ['足球', '多人', '体育', '模拟'],
+          screenshots: [
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3405690/b2bcda2e36966161937db451509f9922901b6145/ss_b2bcda2e36966161937db451509f9922901b6145.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3405690/2048e95987d01af065fdcb67c380e7a0e53df069/ss_2048e95987d01af065fdcb67c380e7a0e53df069.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3405690/bcf8cde56e46d969dfaff90c8a9d85a22b6342fc/ss_bcf8cde56e46d969dfaff90c8a9d85a22b6342fc.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3405690/d01fbbd32769bd7cd70215dedd22e4ffb7bc42bc/ss_d01fbbd32769bd7cd70215dedd22e4ffb7bc42bc.600x338.jpg'
+          ],
+          reviewSummary: '多半差评',
+          reviewCount: '4,011',
+          discountPercent: 70,
+          originalPrice: '¥9,800'
         }
       ]
     },
@@ -1214,88 +1580,184 @@ export const rankingTabsByLocale: Record<Locale, RankingTab[]> = {
       moreLabel: '免费游戏',
       entries: [
         {
-          title: 'Counter-Strike 2',
-          description: '第一人称射击、竞技、多人、免费开玩',
-          price: '免费开玩',
-          image: asset('deal-cs2.jpg'),
-          releaseDate: '现已推出',
+          title: 'Police Chief Simulator: Prologue - Early Days',
+          description: '动作、休闲、策略、模拟',
+          price: '免费',
+          image:
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4224800/fb575d8ea4f0c438b4ed485b320f66654ee304d1/capsule_184x69.jpg?t=1776706028',
+          releaseDate: '2026 年 4 月 20 日',
           platforms: ['windows'],
-          topTags: ['FPS', '竞技', '多人', '免费开玩'],
-          screenshots: [asset('cs2-1.jpg'), asset('cs2-2.jpg'), asset('cs2-3.jpg'), asset('cs2-4.jpg')],
+          topTags: ['动作', '休闲', '策略', '模拟'],
+          screenshots: [
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4224800/810cbb59cf6015a698057bbb17db032da068fe3a/ss_810cbb59cf6015a698057bbb17db032da068fe3a.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4224800/9d68edf46d049ddf41ca2afcf469e8f96e45cca7/ss_9d68edf46d049ddf41ca2afcf469e8f96e45cca7.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4224800/4acb32ef4e65861077fe9715e6bec9059a725dce/ss_4acb32ef4e65861077fe9715e6bec9059a725dce.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4224800/e194475636a2c6dfaa3d75c594ec0531681d6891/ss_e194475636a2c6dfaa3d75c594ec0531681d6891.600x338.jpg'
+          ],
           reviewSummary: '特别好评',
-          reviewCount: '8,28,223'
+          reviewCount: '185'
         },
         {
-          title: 'Dota 2',
-          description: 'MOBA、多人、竞技、免费开玩',
-          price: '免费开玩',
-          image: asset('deal-origin.jpg'),
-          releaseDate: '现已推出',
-          platforms: ['windows', 'mac', 'linux'],
-          topTags: ['MOBA', '多人', '竞技', '免费开玩'],
-          screenshots: [asset('ow-1.jpg'), asset('ow-2.jpg'), asset('ow-3.jpg'), asset('ow-4.jpg')],
+          title: 'Drawquarium Demo',
+          description: '模拟、休闲、沙盒、设计与插画',
+          price: '免费',
+          image:
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4331760/0718ea0357551a9ec9ac74e6e9dc52cfb34e2778/capsule_184x69.jpg?t=1776498541',
+          releaseDate: '2026 年 4 月 18 日',
+          platforms: ['windows'],
+          topTags: ['模拟', '休闲', '沙盒', '设计与插画'],
+          screenshots: [
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4331760/082f5e5dd9c9a1212536952698d34a8af02b45f7/ss_082f5e5dd9c9a1212536952698d34a8af02b45f7.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4331760/40f03ed5f72f1820563db9386403e2e860343768/ss_40f03ed5f72f1820563db9386403e2e860343768.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4331760/1a5a68debaa2dfa42bfb0632a3fb5a49b495af0d/ss_1a5a68debaa2dfa42bfb0632a3fb5a49b495af0d.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4331760/1f10084a1c50228422bd8c62ecaa3083251652cd/ss_1f10084a1c50228422bd8c62ecaa3083251652cd.600x338.jpg'
+          ],
+          reviewSummary: '无用户评测',
+          reviewCount: '无用户评测'
+        },
+        {
+          title: '帝国神话：王权',
+          description: '动作、策略、沙盒、战争游戏',
+          price: '免费',
+          image:
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4510830/5145d493ed7bd516a9bb95a63300c4b371d6849e/capsule_184x69_schinese.jpg?t=1776345556',
+          releaseDate: '2026 年 4 月 16 日',
+          platforms: ['windows'],
+          topTags: ['动作', '策略', '沙盒', '战争游戏'],
+          screenshots: [
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4510830/4c9e60921eac250d4fe8813b3fd126f1d4b2053c/ss_4c9e60921eac250d4fe8813b3fd126f1d4b2053c.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4510830/dd54222f90b4ddc762c62d347889b04259a8e7c9/ss_dd54222f90b4ddc762c62d347889b04259a8e7c9.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4510830/4b1b582df0af286b6d82d31228d45c1b309bd02d/ss_4b1b582df0af286b6d82d31228d45c1b309bd02d.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4510830/283dc18a04e9be8f61d55fa6a27f237146a7a8d5/ss_283dc18a04e9be8f61d55fa6a27f237146a7a8d5.600x338.jpg'
+          ],
+          reviewSummary: '褒贬不一',
+          reviewCount: '383'
+        },
+        {
+          title: 'Idle Iktah',
+          description: '角色扮演、挂机游戏、休闲、老式',
+          price: '免费',
+          image:
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3298520/0562ac1ffdc2c8eb27a01b5f7666082306463eb7/capsule_184x69.jpg?t=1776291517',
+          releaseDate: '2026 年 4 月 15 日',
+          platforms: ['windows', 'mac'],
+          topTags: ['角色扮演', '挂机游戏', '休闲', '老式'],
+          screenshots: [
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3298520/778d9b0ad0d768e9d6032cea3baa5aab378a3cb9/ss_778d9b0ad0d768e9d6032cea3baa5aab378a3cb9.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3298520/c3f4ee204e935d272671a283f8309897ff26a7cc/ss_c3f4ee204e935d272671a283f8309897ff26a7cc.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3298520/580173c735cd795309fa6eb7d6c4ba1ad189af0f/ss_580173c735cd795309fa6eb7d6c4ba1ad189af0f.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3298520/dcd9aeb1538f2a5e8b74954486fe9c81ae11c26b/ss_dcd9aeb1538f2a5e8b74954486fe9c81ae11c26b.600x338.jpg'
+          ],
+          reviewSummary: '褒贬不一',
+          reviewCount: '66'
+        },
+        {
+          title: '暗影地牢 Demo',
+          description: '',
+          price: '免费',
+          image:
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4563350/dfea40a3ab2db3f1d4d486b592e13d5d731667a4/capsule_184x69.jpg?t=1776426134',
+          releaseDate: '2026 年 4 月 14 日',
+          platforms: ['windows'],
+          topTags: [],
+          screenshots: [
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4423580/436412078310e79bcb815f384202bba07f284375/ss_436412078310e79bcb815f384202bba07f284375.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4423580/44495832de0e607670cdac5c622f1a786644c8a5/ss_44495832de0e607670cdac5c622f1a786644c8a5.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4423580/1f320cbe63e2b1f1fa6b4a08b6a6a749b72d29e4/ss_1f320cbe63e2b1f1fa6b4a08b6a6a749b72d29e4.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4423580/5780dacde1c280e2ca22d05dc2b83fa5b2b39234/ss_5780dacde1c280e2ca22d05dc2b83fa5b2b39234.600x338.jpg'
+          ],
+          reviewSummary: '无用户评测',
+          reviewCount: '无用户评测'
+        },
+        {
+          title: 'Legend of YMIR',
+          description: '大型多人在线角色扮演、神话、自选历险体验、动作',
+          price: '免费',
+          image:
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4172530/588e500d194d9eaff0ec3efe4c9866c0f18283a4/capsule_184x69.jpg?t=1776829876',
+          releaseDate: '2026 年 4 月 5 日',
+          platforms: ['windows'],
+          topTags: ['大型多人在线角色扮演', '神话', '自选历险体验', '动作'],
+          screenshots: [
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4172530/0f6a0bb76e8b7aebe6e0ff2196921752e70e6c89/ss_0f6a0bb76e8b7aebe6e0ff2196921752e70e6c89.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4172530/12cdde21b92599439b2267e1fb5e5de55ac08144/ss_12cdde21b92599439b2267e1fb5e5de55ac08144.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4172530/3525f7e8d86a7175c84adc8feb3f1897f1ccdfaa/ss_3525f7e8d86a7175c84adc8feb3f1897f1ccdfaa.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4172530/1085803032fbab80b089729bac27959cf17ca788/ss_1085803032fbab80b089729bac27959cf17ca788.600x338.jpg'
+          ],
+          reviewSummary: '多半差评',
+          reviewCount: '939'
+        },
+        {
+          title: 'Car Mechanic Simulator 2026 - Single Player Demo',
+          description: '',
+          price: '免费',
+          image:
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4307740/0cf118b8780dd9eb60d4d909188f25fd8c87df50/capsule_184x69.jpg?t=1777037939',
+          releaseDate: '2026 年 3 月 30 日',
+          platforms: ['windows'],
+          topTags: [],
+          screenshots: [
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2692660/d3a3406a82b4a2751ecdcbeceb95d7a4ff643c84/ss_d3a3406a82b4a2751ecdcbeceb95d7a4ff643c84.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2692660/341e0ade2d71d82c12dd788a233a06b725319e7f/ss_341e0ade2d71d82c12dd788a233a06b725319e7f.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2692660/7e3689d6e37e737baed2c19abfe3973b9fe7e6d7/ss_7e3689d6e37e737baed2c19abfe3973b9fe7e6d7.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2692660/8d2305f7b706fd840a3eecf162835ba67fe92bc3/ss_8d2305f7b706fd840a3eecf162835ba67fe92bc3.600x338.jpg'
+          ],
+          reviewSummary: '无用户评测',
+          reviewCount: '无用户评测'
+        },
+        {
+          title: '婆罗洲的红珍珠',
+          description: '冒险、解谜、推理、互动小说',
+          price: '免费',
+          image:
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4488860/8c4d7f338b9d259f042034bd41ae14210ea1b7e9/capsule_184x69.jpg?t=1776612035',
+          releaseDate: '2026 年 3 月 27 日',
+          platforms: ['windows', 'mac'],
+          topTags: ['冒险', '解谜', '推理', '互动小说'],
+          screenshots: [
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4488860/53345bb6208a523a0bafcf66571b8454cedf9211/ss_53345bb6208a523a0bafcf66571b8454cedf9211.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4488860/9edb6fffbdcabfdfd167e7bd748d1e1a6198c815/ss_9edb6fffbdcabfdfd167e7bd748d1e1a6198c815.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4488860/45285b873e0bd24da31c994b07ff6865aa6f8817/ss_45285b873e0bd24da31c994b07ff6865aa6f8817.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4488860/46af8e4f30697b6b67e9f7a47dbec39d044f3d1b/ss_46af8e4f30697b6b67e9f7a47dbec39d044f3d1b.600x338.jpg'
+          ],
+          reviewSummary: '好评如潮',
+          reviewCount: '593'
+        },
+        {
+          title: '七大罪：Origin',
+          description: '开放世界、免费开玩、动漫、多人',
+          price: '免费',
+          image:
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3679080/f7ce109f339c8ad6c1f8839313c64806a9edc203/capsule_184x69.jpg?t=1777011324',
+          releaseDate: '2026 年 3 月 17 日',
+          platforms: ['windows'],
+          topTags: ['开放世界', '免费开玩', '动漫', '多人'],
+          screenshots: [
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3679080/ec066430e514ec4ac7a6c7c92e4c7dc932be6cdb/ss_ec066430e514ec4ac7a6c7c92e4c7dc932be6cdb.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3679080/53373b98ce2cec50ffdf76f7cd072aa8f6eda7d2/ss_53373b98ce2cec50ffdf76f7cd072aa8f6eda7d2.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3679080/33059da9c5bc2e3a9b4335700d7453970cba7700/ss_33059da9c5bc2e3a9b4335700d7453970cba7700.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3679080/58fc82c529edeaa16fbdf16b6bdd329cae8b80d7/ss_58fc82c529edeaa16fbdf16b6bdd329cae8b80d7.600x338.jpg'
+          ],
+          reviewSummary: '多半差评',
+          reviewCount: '589'
+        },
+        {
+          title: 'VRCVideoCacher',
+          description: '实用工具、免费开玩、虚拟现实、软件',
+          price: '免费',
+          image:
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4296960/d2560e537f1b45569de820726d7b25b0140684b1/capsule_184x69.jpg?t=1773027424',
+          releaseDate: '2026 年 3 月 8 日',
+          platforms: ['windows', 'linux'],
+          topTags: ['实用工具', '免费开玩', '虚拟现实', '软件'],
+          screenshots: [
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4296960/648bc3aee5e19b0fb58b463a454b6ce0ccdf4df7/ss_648bc3aee5e19b0fb58b463a454b6ce0ccdf4df7.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4296960/4d55a91f3822eafce4f75835eb7f52566fe4137a/ss_4d55a91f3822eafce4f75835eb7f52566fe4137a.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4296960/3a2dcdd5e84785da50a6cc2155eac3629d716863/ss_3a2dcdd5e84785da50a6cc2155eac3629d716863.600x338.jpg',
+            'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4296960/29092ab94aa6a2a1827bf04820edcafb9dedb896/ss_29092ab94aa6a2a1827bf04820edcafb9dedb896.600x338.jpg'
+          ],
           reviewSummary: '特别好评',
-          reviewCount: '2,269,582'
-        },
-        {
-          title: 'Warframe',
-          description: '科幻动作、刷宝、合作、免费开玩',
-          price: '免费开玩',
-          image: asset('vr-bonelab.jpg'),
-          releaseDate: '现已推出',
-          platforms: ['windows'],
-          topTags: ['科幻动作', '刷宝', '合作', '免费开玩'],
-          screenshots: [asset('ck3-1.jpg'), asset('ck3-2.jpg'), asset('ck3-3.jpg'), asset('ck3-4.jpg')],
-          reviewSummary: '特别好评',
-          reviewCount: '620,114'
-        },
-        {
-          title: 'The Finals',
-          description: '高破坏竞技射击、队伍合作、免费开玩',
-          price: '免费开玩',
-          image: asset('vr-alyx.jpg'),
-          releaseDate: '现已推出',
-          platforms: ['windows'],
-          topTags: ['竞技射击', '高破坏', '合作', '免费开玩'],
-          screenshots: [asset('cs2-2.jpg'), asset('cs2-3.jpg'), asset('ow-2.jpg'), asset('ow-3.jpg')],
-          reviewSummary: '多半好评',
-          reviewCount: '178,440'
-        },
-        {
-          title: 'Yu-Gi-Oh! Master Duel',
-          description: '卡牌竞技、策略、在线对战、免费开玩',
-          price: '免费开玩',
-          image: asset('cheap-metro.jpg'),
-          releaseDate: '现已推出',
-          platforms: ['windows'],
-          topTags: ['卡牌竞技', '策略', '在线对战', '免费开玩'],
-          screenshots: [asset('cheap-slay.jpg'), asset('cheap-breach.jpg'), asset('cheap-hike.jpg'), asset('cheap-metro.jpg')],
-          reviewSummary: '特别好评',
-          reviewCount: '72,885'
-        },
-        {
-          title: 'Apex Legends',
-          description: '英雄大逃杀、滑铲枪战、组队竞技、免费开玩',
-          price: '免费开玩',
-          image: asset('vr-alyx.jpg'),
-          releaseDate: '现已推出',
-          platforms: ['windows'],
-          topTags: ['大逃杀', '英雄射击', 'FPS', '免费开玩'],
-          screenshots: [asset('cs2-2.jpg'), asset('cs2-3.jpg'), asset('ow-2.jpg'), asset('ow-3.jpg')],
-          reviewSummary: '特别好评',
-          reviewCount: '783,118'
-        },
-        {
-          title: 'PUBG: BATTLEGROUNDS',
-          description: '写实大逃杀、枪械手感、长期热门、免费开玩',
-          price: '免费开玩',
-          image: asset('deal-cs2.jpg'),
-          releaseDate: '现已推出',
-          platforms: ['windows'],
-          topTags: ['大逃杀', '写实射击', '多人', '免费开玩'],
-          screenshots: [asset('ow-4.jpg'), asset('cs2-1.jpg'), asset('cs2-4.jpg'), asset('ow-1.jpg')],
-          reviewSummary: '多半好评',
-          reviewCount: '15,28,110'
+          reviewCount: '121'
         }
       ]
     }

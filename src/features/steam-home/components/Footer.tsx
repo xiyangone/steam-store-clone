@@ -1,10 +1,9 @@
 import type { ReactElement } from 'react';
+import { getPendingLinkHref } from '../../../app/navigation';
 import type { FooterLinkGroup } from '../types';
 
-const STEAM_LOGO_URL =
-  'https://store.akamai.steamstatic.com/public/shared/images/header/logo_steam.svg?t=962016';
-const VALVE_LOGO_URL =
-  'https://store.akamai.steamstatic.com/public/shared/images/responsive/footerLogo_valve_new.png';
+const STEAM_LOGO_URL = `${import.meta.env.BASE_URL}steam/home/logos/logo_steam.svg`;
+const VALVE_LOGO_URL = `${import.meta.env.BASE_URL}steam/home/logos/footer_logo_valve.png`;
 
 type SocialLink = {
   label: string;
@@ -57,6 +56,8 @@ type FooterProps = {
 };
 
 export function Footer({ groups, lead }: FooterProps) {
+  const pendingHref = getPendingLinkHref();
+
   return (
     <footer className="page-footer page_footer_ctn">
       <div className="page_content">
@@ -66,14 +67,14 @@ export function Footer({ groups, lead }: FooterProps) {
               <div className="page-footer__brandRow">
                 <a
                   className="page-footer__brand"
-                  href="https://store.steampowered.com/"
+                  href={pendingHref}
                   aria-label="Steam 主页链接"
                 >
                   <img className="brand-link__logo" src={STEAM_LOGO_URL} alt="Steam" />
                 </a>
                 <a
                   className="page-footer__valve"
-                  href="https://www.valvesoftware.com/"
+                  href={pendingHref}
                   aria-label="Valve 主页链接"
                 >
                   <img src={VALVE_LOGO_URL} alt="Valve" />
@@ -91,10 +92,8 @@ export function Footer({ groups, lead }: FooterProps) {
                   <a
                     key={label}
                     className="page-footer__socialLink"
-                    href={href}
+                    href={pendingHref}
                     aria-label={label}
-                    target="_blank"
-                    rel="noreferrer"
                   >
                     <Icon />
                   </a>
@@ -109,7 +108,7 @@ export function Footer({ groups, lead }: FooterProps) {
                   <ul>
                     {group.links.map((link) => (
                       <li key={link.label}>
-                        <a href={link.href}>{link.label}</a>
+                        <a href={pendingHref}>{link.label}</a>
                       </li>
                     ))}
                   </ul>
